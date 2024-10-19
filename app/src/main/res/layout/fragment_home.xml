@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    >
+
+
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="আপনার পছন্দের ক্যাটাগরি নির্বাচন করুন"
+        android:fontFamily="@font/alinur_bongobondhu"
+        android:textSize="22sp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/sangri"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <GridView
+        android:layout_below="@id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        />
+
+
+
+
+</RelativeLayout>

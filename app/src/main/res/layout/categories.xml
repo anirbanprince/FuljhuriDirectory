@@ -5,18 +5,37 @@
     android:orientation="vertical">
 
 
+<RelativeLayout
+    android:id="@+id/relLayout"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="@color/sangri"
+    android:clickable="true"
+    android:foreground="?attr/actionBarItemBackground"
+
+    >
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/sangri"
+        android:id="@+id/catName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="ক্যাটাগরি"
         android:fontFamily="@font/alinur_bongobondhu"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:gravity="center"
         />
+
+
+
+</RelativeLayout>
+
+
+
 
 
 

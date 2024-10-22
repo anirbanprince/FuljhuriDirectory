@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpListFragment"
+    >
+
+
+    <TextView
+    android:id="@+id/titleText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:text="১ নং বদরখালী ইউনিয়নের সদস্য বৃন্দ"
+    android:fontFamily="@font/alinur_bongobondhu"
+    android:textSize="22sp"
+    android:layout_centerInParent="true"
+    android:layout_alignParentTop="true"
+    android:textColor="@color/sangri"
+    android:textStyle="bold"
+    android:gravity="center"
+    />
+
+    <TextView
+        android:id="@+id/vdAdd"
+        android:layout_below="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        />
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_below="@id/vdAdd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="1"
+        />
+
+
+
+
+</RelativeLayout>

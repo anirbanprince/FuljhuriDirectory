@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,6 +86,19 @@ public class HomeFragment extends Fragment {
  //       int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
   //      relLayout.setBackgroundColor(color);
         catName.setText(cName);
+
+        relLayout.setOnClickListener(v -> {
+
+            if (catName.getText().equals("ইউপি সদস্য")){
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.fragment_container, new UpListFragment());
+                fragmentTransaction.commit();
+            }
+
+        });
+
 
 
 

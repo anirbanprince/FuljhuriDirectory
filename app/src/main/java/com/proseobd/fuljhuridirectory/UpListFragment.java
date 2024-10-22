@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,7 +46,10 @@ public class UpListFragment extends Fragment {
         gridView = fragmentView.findViewById(R.id.gridView);
 
 
+        createTable();
 
+        MyAdapter myAdapter = new MyAdapter();
+        gridView.setAdapter(myAdapter);
 
 
 
@@ -83,6 +89,26 @@ public class UpListFragment extends Fragment {
             View myView = layoutInflater.inflate(R.layout.up_members_list, parent,false);
 
 
+            RelativeLayout relLayout =myView.findViewById(R.id.relLayout);
+
+            ImageView profileImage = myView.findViewById(R.id.profileImage) ;
+
+            TextView name =myView.findViewById(R.id.name) ;
+            TextView designation=myView.findViewById(R.id.designation) ;
+            TextView wordNo =myView.findViewById(R.id.wordNo) ;
+            TextView mobile = myView.findViewById(R.id.mobile) ;
+
+
+
+
+
+
+
+
+
+
+
+
             return myView;
         }
     }
@@ -99,7 +125,6 @@ public class UpListFragment extends Fragment {
 
     private void createTable(){
 
-        arrayList = new ArrayList<>();
 
 
         String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
@@ -136,8 +161,6 @@ public class UpListFragment extends Fragment {
 
 
 
-                                MyAdapter myAdapter = new MyAdapter();
-                                gridView.setAdapter(myAdapter);
 
 
                             } catch (JSONException e) {

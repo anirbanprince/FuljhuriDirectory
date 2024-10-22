@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment_container, new UpListFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new UpListFragment());
                 fragmentTransaction.commit();
             }
 

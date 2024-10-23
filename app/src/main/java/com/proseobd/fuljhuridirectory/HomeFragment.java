@@ -44,9 +44,6 @@ public class HomeFragment extends Fragment {
 
 
 
-
-
-
         return fragmentView;
 
     }
@@ -95,6 +92,7 @@ public class HomeFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, new UpListFragment());
                 fragmentTransaction.commit();
+                
             }
 
         });

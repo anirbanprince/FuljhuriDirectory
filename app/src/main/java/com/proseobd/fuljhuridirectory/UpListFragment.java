@@ -51,10 +51,6 @@ public class UpListFragment extends Fragment {
 
         loadData();
 
-        MyAdapter myAdapter = new MyAdapter();
-        gridView.setAdapter(myAdapter);
-
-
 
 
 
@@ -140,8 +136,11 @@ public class UpListFragment extends Fragment {
     //===================== Data Parsing Privet Methode ====================//
 
 
-    private void loadData () {
+    public void loadData () {
 
+        arrayList = new ArrayList<>();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
         String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
 
@@ -180,9 +179,15 @@ public class UpListFragment extends Fragment {
 
 
 
-
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
+                            }
+
+                            if (arrayList.size()>0) {
+
+                                MyAdapter myAdapter = new MyAdapter();
+                                gridView.setAdapter(myAdapter);
+
                             }
 
 
@@ -199,7 +204,7 @@ public class UpListFragment extends Fragment {
             }
         });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
         requestQueue.add(jsonArrayRequest);
 
     }

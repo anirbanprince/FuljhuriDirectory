@@ -1,5 +1,7 @@
 package com.proseobd.fuljhuridirectory;
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,6 +12,7 @@ import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
+
+    FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
+
+
 
 
     @Override
@@ -71,14 +78,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    //================== BackPress =====================//
+
+    private void Backpresses() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+    }
+
+    //================ Backpress ===================////
+
 
     @Override
     public void onBackPressed() {
+
+
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+        }
+
+
+        else {
             //super.onBackPressed();
         }
+
+        Backpresses();
+
     }
 
 

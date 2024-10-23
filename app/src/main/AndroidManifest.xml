@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ফুলঝুড়িডিরেক্টরিFuljhuriDirectory"
         tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <!--
             Adding this meta data is required as of Google Mobile Ads SDK version 17.0.0 as explained in
             https://developers.google.com/ad-manager/mobile-ads-sdk/android/quick-start#update_your_androidmanifestxml
@@ -31,7 +36,7 @@
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

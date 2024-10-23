@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UpListFragment"
+    android:orientation="vertical"
     >
 
 
@@ -16,8 +17,6 @@
     android:text="১ নং বদরখালী ইউনিয়নের সদস্য বৃন্দ"
     android:fontFamily="@font/alinur_bongobondhu"
     android:textSize="22sp"
-    android:layout_centerInParent="true"
-    android:layout_alignParentTop="true"
     android:textColor="@color/sangri"
     android:textStyle="bold"
     android:gravity="center"
@@ -25,21 +24,26 @@
 
     <TextView
         android:id="@+id/vdAdd"
-        android:layout_below="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:visibility="gone"
+        android:text="Hello"
+        android:textSize="20sp"
         />
 
-    <GridView
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+    <ListView
         android:id="@+id/gridView"
-        android:layout_below="@id/vdAdd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="1"
         />
 
 
-
-
-</RelativeLayout>
+</LinearLayout>

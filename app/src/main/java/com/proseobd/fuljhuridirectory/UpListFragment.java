@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -20,19 +20,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class UpListFragment extends Fragment {
 
-    GridView gridView;
+    ListView gridView;
+    ProgressBar progressBar;
 
     HashMap<String, String> hashMap;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
@@ -43,14 +44,15 @@ public class UpListFragment extends Fragment {
 
         View fragmentView = inflater.inflate(R.layout.fragment_up_list, container, false);
 
+        TextView vdAdd = fragmentView.findViewById(R.id.vdAdd);
+
         gridView = fragmentView.findViewById(R.id.gridView);
+        progressBar = fragmentView.findViewById(R.id.progressBar);
 
-
-        createTable();
+        loadData();
 
         MyAdapter myAdapter = new MyAdapter();
         gridView.setAdapter(myAdapter);
-
 
 
 
@@ -65,7 +67,8 @@ public class UpListFragment extends Fragment {
     //===================== Base Adapter Start Here ==========================//
     //===================== Base Adapter Start Here ==========================//
 
-    public class MyAdapter extends BaseAdapter{
+
+    private class MyAdapter extends BaseAdapter{
 
         @Override
         public int getCount() {
@@ -86,24 +89,35 @@ public class UpListFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater layoutInflater = getLayoutInflater();
-            View myView = layoutInflater.inflate(R.layout.up_members_list, parent,false);
+            View myView = layoutInflater.inflate(R.layout.up_members_list, parent, false);
 
-
-            RelativeLayout relLayout =myView.findViewById(R.id.relLayout);
-
-            ImageView profileImage = myView.findViewById(R.id.profileImage) ;
-
-            TextView name =myView.findViewById(R.id.name) ;
-            TextView designation=myView.findViewById(R.id.designation) ;
-            TextView wordNo =myView.findViewById(R.id.wordNo) ;
-            TextView mobile = myView.findViewById(R.id.mobile) ;
+            ImageView profileImage = myView.findViewById(R.id.profileImage);
+            TextView name = myView.findViewById(R.id.name);
+            TextView designation = myView.findViewById(R.id.designation);
+            TextView wordNo = myView.findViewById(R.id.wordNo);
+            TextView mobile = myView.findViewById(R.id.mobile);
+            TextView email = myView.findViewById(R.id.email);
 
 
 
 
+            HashMap<String, String> hashMap = arrayList.get(position);
+            String s_profileImage = hashMap.get("image_link");
+            String s_name = hashMap.get("name");
+            String s_designation = hashMap.get("designation");
+            String s_wordNo = hashMap.get("word_no");
+            String s_mobile = hashMap.get("phone_number");
+            String s_email = hashMap.get("email");
 
+            Picasso.get()
+                    .load(s_profileImage)
+                    .into(profileImage);
 
-
+            name.setText(s_name);
+            designation.setText(s_designation);
+            wordNo.setText(s_wordNo);
+            mobile.setText(s_mobile);
+            email.setText(s_email);
 
 
 
@@ -112,6 +126,8 @@ public class UpListFragment extends Fragment {
             return myView;
         }
     }
+
+
 
     //===================== Base Adapter End Here ==========================//
     //===================== Base Adapter End Here ==========================//
@@ -123,17 +139,18 @@ public class UpListFragment extends Fragment {
     //===================== Data Parsing Privet Methode ====================//
     //===================== Data Parsing Privet Methode ====================//
 
-    private void createTable(){
+
+    private void loadData () {
 
 
+        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
 
-        String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
-
+        progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        progressBar.setVisibility(View.GONE);
 
                         Log.d("ServerRes", response.toString());
 
@@ -146,16 +163,17 @@ public class UpListFragment extends Fragment {
                                 String name =  jsonObject.optString("name");
                                 String designation = jsonObject.optString("designation");
                                 String phone_number = jsonObject.optString("phone_number");
-                                String word_no = jsonObject.optString("word_no");
                                 String image_link = jsonObject.optString("image_link");
+                                String word_no = jsonObject.optString("word_no");
                                 String email = jsonObject.optString("email");
+
 
                                 hashMap = new HashMap<>();
                                 hashMap.put("name", name);
                                 hashMap.put("designation", designation);
                                 hashMap.put("phone_number", phone_number);
-                                hashMap.put("word_no", word_no);
                                 hashMap.put("image_link", image_link);
+                                hashMap.put("word_no", word_no);
                                 hashMap.put("email", email);
                                 arrayList.add(hashMap);
 
@@ -184,13 +202,16 @@ public class UpListFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(jsonArrayRequest);
 
-
-
-
     }
 
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
 
+    //===================== Data Parsing Privet Methode ====================//
+    //===================== Data Parsing Privet Methode ====================//
+    //===================== Data Parsing Privet Methode ====================//
 }
+
+
+
+
+
+

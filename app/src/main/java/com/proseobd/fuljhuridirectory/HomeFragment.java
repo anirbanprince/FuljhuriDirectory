@@ -1,5 +1,6 @@
 package com.proseobd.fuljhuridirectory;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -39,7 +40,6 @@ public class HomeFragment extends Fragment {
         creattable();
 
         MyAdapter myAdapter = new MyAdapter();
-
         gridView.setAdapter(myAdapter);
 
 
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
     }
 
 //======================= Base Adapter =============================//
-    public class MyAdapter extends BaseAdapter{
+    private class MyAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
 
         relLayout.setOnClickListener(v -> {
 
-            if (catName.getText().equals("ইউপি সদস্য")){
+            if (cName.contains("ইউপি সদস্য")){
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

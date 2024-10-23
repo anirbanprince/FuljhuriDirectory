@@ -77,15 +77,38 @@
             android:textSize="20sp"
             />
 
-        <TextView
-            android:id="@+id/wordNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alinur_bongobondhu"
-            android:text="ওয়ার্ড নং"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alinur_bongobondhu"
+                    android:text="ওয়ার্ড নং"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    />
+
+                <TextView
+                    android:id="@+id/wordNo"
+                    android:layout_marginStart="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alinur_bongobondhu"
+                    android:text="ওয়ার্ড নং"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+
 
 
             <LinearLayout
@@ -109,6 +132,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:src="@drawable/call"
+                    android:clickable="true"
+                    android:foreground="?attr/actionBarItemBackground"
                     />
 
             </LinearLayout>
@@ -135,6 +160,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:src="@drawable/email"
+                    android:clickable="true"
+                    android:foreground="?attr/actionBarItemBackground"
                     />
 
             </LinearLayout>

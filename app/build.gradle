@@ -44,4 +44,12 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'com.android.volley:volley:1.2.1'
+
+    // For Swipe Fresh
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    // lottie anim
+    implementation "com.airbnb.android:lottie:3.4.0"
+
+    //t Rex offline game
+    implementation 'com.github.LionZXY.T-Rex-Android:trex-offline:1.0.0'
 }

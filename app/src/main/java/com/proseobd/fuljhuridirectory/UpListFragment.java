@@ -41,7 +41,7 @@ public class UpListFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     HashMap<String, String> hashMap;
-    ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+    ArrayList<HashMap<String, String>> upMemberList = new ArrayList<>();
 
 
 
@@ -101,7 +101,7 @@ public class UpListFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return arrayList.size();
+            return upMemberList.size();
         }
 
         @Override
@@ -128,7 +128,7 @@ public class UpListFragment extends Fragment {
             TextView email = myView.findViewById(R.id.email);
 
 
-            HashMap<String, String> hashMap = arrayList.get(position);
+            HashMap<String, String> hashMap = upMemberList.get(position);
             String s_profileImage = hashMap.get("image_link");
             String s_name = hashMap.get("name");
             String s_designation = hashMap.get("designation");
@@ -166,7 +166,7 @@ public class UpListFragment extends Fragment {
 
     public void loadData () {
 
-        arrayList = new ArrayList<>();
+        upMemberList = new ArrayList<>();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
@@ -203,14 +203,14 @@ public class UpListFragment extends Fragment {
                                 hashMap.put("image_link", image_link);
                                 hashMap.put("word_no", word_no);
                                 hashMap.put("email", email);
-                                arrayList.add(hashMap);
+                                upMemberList.add(hashMap);
 
 
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
                             }
 
-                            if (arrayList.size()>0) {
+                            if (upMemberList.size()>0) {
 
                                 MyAdapter myAdapter = new MyAdapter();
                                 gridView.setAdapter(myAdapter);

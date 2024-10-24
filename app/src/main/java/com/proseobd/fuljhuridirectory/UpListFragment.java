@@ -60,7 +60,8 @@ public class UpListFragment extends Fragment {
         if (NetworkUtils.isInternetAvailable(getActivity())) {
             loadData();
         } else {
-            Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_LONG).show();
+            swipeRefreshLayout.setRefreshing(false);
         }
 
 
@@ -78,7 +79,8 @@ public class UpListFragment extends Fragment {
 
                     swipeRefreshLayout.setRefreshing(false);
                 } else {
-                    Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_LONG).show();
+                    swipeRefreshLayout.setRefreshing(false);
                 }
 
             }

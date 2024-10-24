@@ -3,16 +3,19 @@ package com.proseobd.fuljhuridirectory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.proseobd.controllers.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -34,9 +38,12 @@ public class UpListFragment extends Fragment {
 
     ListView gridView;
     ProgressBar progressBar;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     HashMap<String, String> hashMap;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+
+
 
 
     @Override
@@ -48,10 +55,34 @@ public class UpListFragment extends Fragment {
 
         gridView = fragmentView.findViewById(R.id.gridView);
         progressBar = fragmentView.findViewById(R.id.progressBar);
+        swipeRefreshLayout = fragmentView.findViewById(R.id.swipeRefreshLayout);
 
-        loadData();
+        if (NetworkUtils.isInternetAvailable(getActivity())) {
+            loadData();
+        } else {
+            Toast.makeText(getActivity(), "Please Connect TO The Internet", Toast.LENGTH_SHORT).show();
+        }
 
 
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                if (NetworkUtils.isInternetAvailable(getActivity())) {
+                    loadData();
+                    swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark),
+                            getResources().getColor(android.R.color.holo_orange_dark),
+                            getResources().getColor(android.R.color.holo_green_dark),
+                            getResources().getColor(android.R.color.holo_red_dark));
+
+                    swipeRefreshLayout.setRefreshing(false);
+                } else {
+                    Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
 
 
@@ -95,8 +126,6 @@ public class UpListFragment extends Fragment {
             TextView email = myView.findViewById(R.id.email);
 
 
-
-
             HashMap<String, String> hashMap = arrayList.get(position);
             String s_profileImage = hashMap.get("image_link");
             String s_name = hashMap.get("name");
@@ -118,12 +147,9 @@ public class UpListFragment extends Fragment {
 
 
 
-
             return myView;
         }
     }
-
-
 
     //===================== Base Adapter End Here ==========================//
     //===================== Base Adapter End Here ==========================//
@@ -142,7 +168,8 @@ public class UpListFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
-        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
+//        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
+        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
 
         progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
@@ -177,8 +204,6 @@ public class UpListFragment extends Fragment {
                                 arrayList.add(hashMap);
 
 
-
-
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
                             }
@@ -189,8 +214,6 @@ public class UpListFragment extends Fragment {
                                 gridView.setAdapter(myAdapter);
 
                             }
-
-
 
                         }
 
@@ -209,10 +232,13 @@ public class UpListFragment extends Fragment {
 
     }
 
+    //===================== Data Parsing Privet Methode ====================//
+    //===================== Data Parsing Privet Methode ====================//
+    //===================== Data Parsing Privet Methode ====================//
 
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
+
+
+
 }
 
 

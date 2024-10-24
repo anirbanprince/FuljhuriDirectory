@@ -79,9 +79,7 @@ public class HomeFragment extends Fragment {
         hashMap = arrayList.get(position);
         String cName = hashMap.get("catName");
 
- //       Random rnd = new Random();
- //       int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-  //      relLayout.setBackgroundColor(color);
+
         catName.setText(cName);
 
         relLayout.setOnClickListener(v -> {

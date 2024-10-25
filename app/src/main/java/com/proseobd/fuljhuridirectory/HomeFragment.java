@@ -142,6 +142,10 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "গ্যারেজ");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "গ্যার্মেন্টস এবং কাপড়ের দোকান");
         arrayList.add(hashMap);
 
@@ -174,6 +178,14 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "নৌ-পরিসেবা");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
+        hashMap.put("catName" , "পাইকারি দোকান");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "পানের দোকান");
         arrayList.add(hashMap);
 
@@ -202,6 +214,10 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "ভ্যারাইটিস স্টোর");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "মসজিদ এবং মন্দির");
         arrayList.add(hashMap);
 
@@ -227,32 +243,41 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "যানবাহন");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "শিক্ষা প্রতিষ্ঠান");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
+        hashMap.put("catName" , "স-মিল এবং রাইচ মিল");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "সিলভার এবং ম্যালামাইন");
         arrayList.add(hashMap);
 
-        hashMap =new HashMap<>();
-        hashMap.put("catName" , "স-মিল");
-        arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "স্টেডিও এবং কম্পিউটার টাইপ");
+        hashMap.put("catName" , "স্টুডিও এবং কম্পিউটার টাইপ");
         arrayList.add(hashMap);
 
-        hashMap =new HashMap<>();
-        hashMap.put("catName" , "স্যালুন");
-        arrayList.add(hashMap);
+
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "হার্ডওয়্যার এন্ড স্যানিটেশন");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "হোটেল এবং রেস্টুরেস্ট");
+        hashMap.put("catName" , "হোটেল এবং রেস্টুরেন্ট");
         arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
+        hashMap.put("catName" , "অন্যান্য");
+        arrayList.add(hashMap);
+
+
 
 
     }

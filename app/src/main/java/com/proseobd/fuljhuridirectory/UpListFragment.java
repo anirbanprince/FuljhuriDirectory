@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.proseobd.controllers.DialogUtils;
 import com.proseobd.controllers.NetworkUtils;
 import com.squareup.picasso.Picasso;
 
@@ -60,7 +61,7 @@ public class UpListFragment extends Fragment {
         if (NetworkUtils.isInternetAvailable(getActivity())) {
             loadData();
         } else {
-            Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_LONG).show();
+            DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "আপনার মোবাইলে ইন্টারনেট নেই!");
             swipeRefreshLayout.setRefreshing(false);
         }
 
@@ -79,7 +80,7 @@ public class UpListFragment extends Fragment {
 
                     swipeRefreshLayout.setRefreshing(false);
                 } else {
-                    Toast.makeText(getActivity(), "Please Connect To The Internet", Toast.LENGTH_LONG).show();
+                    DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "আপনার মোবাইলে ইন্টারনেট নেই!");
                     swipeRefreshLayout.setRefreshing(false);
                 }
 

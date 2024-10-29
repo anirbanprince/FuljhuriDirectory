@@ -1,8 +1,13 @@
 package com.proseobd.fuljhuridirectory;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
@@ -10,12 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -33,16 +36,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class UpListFragment extends Fragment {
 
-    ListView gridView;
+    RecyclerView recycleView;
     ProgressBar progressBar;
+    SearchView search;
     SwipeRefreshLayout swipeRefreshLayout;
 
     HashMap<String, String> hashMap;
     ArrayList<HashMap<String, String>> upMemberList = new ArrayList<>();
+
 
 
 
@@ -54,9 +60,29 @@ public class UpListFragment extends Fragment {
 
         TextView vdAdd = fragmentView.findViewById(R.id.vdAdd);
 
-        gridView = fragmentView.findViewById(R.id.gridView);
+        recycleView = (RecyclerView) fragmentView.findViewById(R.id.recycleView);
+        recycleView.setHasFixedSize(true);
+        recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         progressBar = fragmentView.findViewById(R.id.progressBar);
         swipeRefreshLayout = fragmentView.findViewById(R.id.swipeRefreshLayout);
+
+
+
+
+        
+
+
+
+        if (NetworkUtils.isInternetAvailable(getActivity())) {
+            loadData();
+        } else {
+            DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "আপনার মোবাইলে ইন্টারনেট নেই!");
+            swipeRefreshLayout.setRefreshing(false);
+        }
+
+
+
+
 
         if (NetworkUtils.isInternetAvailable(getActivity())) {
             loadData();
@@ -89,76 +115,17 @@ public class UpListFragment extends Fragment {
 
 
 
+
+
+
         return fragmentView;
     }
 
-
-    //===================== Base Adapter Start Here ==========================//
-    //===================== Base Adapter Start Here ==========================//
-    //===================== Base Adapter Start Here ==========================//
-
-
-    private class MyAdapter extends BaseAdapter{
-
-        @Override
-        public int getCount() {
-            return upMemberList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            LayoutInflater layoutInflater = getLayoutInflater();
-            View myView = layoutInflater.inflate(R.layout.up_members_list, parent, false);
-
-            ImageView profileImage = myView.findViewById(R.id.profileImage);
-            TextView name = myView.findViewById(R.id.name);
-            TextView designation = myView.findViewById(R.id.designation);
-            TextView wordNo = myView.findViewById(R.id.wordNo);
-            TextView mobile = myView.findViewById(R.id.mobile);
-            TextView email = myView.findViewById(R.id.email);
-
-
-            HashMap<String, String> hashMap = upMemberList.get(position);
-            String s_profileImage = hashMap.get("image_link");
-            String s_name = hashMap.get("name");
-            String s_designation = hashMap.get("designation");
-            String s_wordNo = hashMap.get("word_no");
-            String s_mobile = hashMap.get("phone_number");
-            String s_email = hashMap.get("email");
-
-            Picasso.get()
-                    .load(s_profileImage)
-                    .into(profileImage);
-
-            name.setText(s_name);
-            designation.setText(s_designation);
-            wordNo.setText(s_wordNo);
-            mobile.setText(s_mobile);
-            email.setText(s_email);
+    //-------------------onCreate END--------------------//
 
 
 
 
-            return myView;
-        }
-    }
-
-    //===================== Base Adapter End Here ==========================//
-    //===================== Base Adapter End Here ==========================//
-    //===================== Base Adapter End Here ==========================//
-
-    /////////////////////////////////////////////////////////////////////////
 
     //===================== Data Parsing Privet Methode ====================//
     //===================== Data Parsing Privet Methode ====================//
@@ -171,7 +138,6 @@ public class UpListFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
-//        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/up_members.json";
         String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
 
         progressBar.setVisibility(View.VISIBLE);
@@ -196,7 +162,6 @@ public class UpListFragment extends Fragment {
                                 String word_no = jsonObject.optString("word_no");
                                 String email = jsonObject.optString("email");
 
-
                                 hashMap = new HashMap<>();
                                 hashMap.put("name", name);
                                 hashMap.put("designation", designation);
@@ -207,18 +172,19 @@ public class UpListFragment extends Fragment {
                                 upMemberList.add(hashMap);
 
 
+
+
+
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
                             }
 
-                            if (upMemberList.size()>0) {
-
-                                MyAdapter myAdapter = new MyAdapter();
-                                gridView.setAdapter(myAdapter);
-
-                            }
 
                         }
+
+                        RecycleAdapter recycleAdapter = new RecycleAdapter();
+                        recycleView.setAdapter(recycleAdapter);
+
 
 
 
@@ -226,6 +192,8 @@ public class UpListFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "সার্ভার এরর!");
 
             }
         });
@@ -235,9 +203,122 @@ public class UpListFragment extends Fragment {
 
     }
 
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
+
+    //===================== Data Parsing END ====================//
+    //===================== Data Parsing END ====================//
+    //===================== Data Parsing PEND ====================//
+
+    // =============== Recycler Adapter Start ==========//
+    // =============== Recycler Adapter Start ==========//
+    // =============== Recycler Adapter Start ==========//
+
+    private class RecycleAdapter extends RecyclerView.Adapter < RecycleAdapter.recycleViewHolder > {
+
+
+        private class recycleViewHolder extends RecyclerView.ViewHolder{
+
+
+            ImageView profileImage, imgCall;
+            TextView name, designation, wordNo, mobile, email;
+
+
+            public recycleViewHolder(@NonNull View itemView) {
+
+                super(itemView);
+
+
+                profileImage = itemView.findViewById(R.id.profileImage);
+                imgCall = itemView.findViewById(R.id.imgCall);
+                name = itemView.findViewById(R.id.name);
+                designation = itemView.findViewById(R.id.designation);
+                wordNo = itemView.findViewById(R.id.wordNo);
+                mobile = itemView.findViewById(R.id.mobile);
+                email = itemView.findViewById(R.id.email);
+
+            }
+
+
+        }
+
+
+        @NonNull
+        @Override
+        public recycleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+            LayoutInflater inflater = getLayoutInflater();
+            View myView = inflater.inflate(R.layout.up_members_list, parent, false);
+
+
+            return new recycleViewHolder(myView);
+        }
+
+
+
+        @Override
+        public void onBindViewHolder(@NonNull recycleViewHolder holder, int position) {
+
+            HashMap<String, String> hashMap = upMemberList.get(position);
+            String s_profileImage = hashMap.get("image_link");
+            String s_name = hashMap.get("name");
+            String s_designation = hashMap.get("designation");
+            String s_wordNo = hashMap.get("word_no");
+            String s_mobile = hashMap.get("phone_number");
+            String s_email = hashMap.get("email");
+
+            Picasso.get()
+                    .load(s_profileImage)
+                    .into(holder.profileImage);
+
+            holder.name.setText(s_name);
+            holder.designation.setText(s_designation);
+            holder.wordNo.setText(s_wordNo);
+            holder.mobile.setText(s_mobile);
+            holder.email.setText(s_email);
+
+
+            holder.imgCall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String pNumbre = holder.mobile.getText().toString();
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(pNumbre));
+                    startActivity(intent);
+                }
+            });
+
+
+
+        }
+
+
+
+        @Override
+        public int getItemCount() {
+
+
+            return upMemberList.size();
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+
+    // =============== Recycler Adapter END ==========//
+    // =============== Recycler Adapter END ==========//
+    // =============== Recycler Adapter END ==========//
+
+
+
+    /////////////////////////////////////////////////////////////////////////
+
+
+
 
 
 

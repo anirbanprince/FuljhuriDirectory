@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UpListFragment"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/titleText"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:text="১ নং বদরখালী ইউনিয়নের সদস্য বৃন্দ"
         android:fontFamily="@font/alinur_bongobondhu"
         android:textSize="22sp"
@@ -21,19 +20,6 @@
         android:textStyle="bold"
         android:gravity="center"
         />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="vertical"
-        >
-
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            />
-
-    </LinearLayout>
 
 
     <TextView
@@ -43,6 +29,7 @@
         android:visibility="gone"
         android:text="Hello"
         android:textSize="20sp"
+        android:layout_below="@+id/titleText"
         />
 
     <ProgressBar
@@ -51,22 +38,27 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
+        android:layout_below="@+id/vdAdd"
         />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/swipeRefreshLayout"
+        android:layout_below="@id/vdAdd"
         >
 
-        <ListView
-            android:id="@+id/gridView"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="vertical"
             />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 
-</LinearLayout>
+</RelativeLayout>

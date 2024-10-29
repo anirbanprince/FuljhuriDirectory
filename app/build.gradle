@@ -56,4 +56,5 @@ dependencies {
 
     //t Rex offline game
     implementation 'com.github.LionZXY.T-Rex-Android:trex-offline:1.0.0'
+
 }

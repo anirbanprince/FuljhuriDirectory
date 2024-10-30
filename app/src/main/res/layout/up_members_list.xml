@@ -24,6 +24,7 @@
         android:orientation="horizontal"
         android:background="@color/sangri"
         android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/actionBarItemBackground"
         >
 
@@ -138,6 +139,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/call"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="?attr/actionBarItemBackground"
                     />
 
@@ -166,6 +168,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/email"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="?attr/actionBarItemBackground"
                     />
 

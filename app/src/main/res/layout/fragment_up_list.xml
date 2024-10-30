@@ -22,6 +22,7 @@
         />
 
 
+
     <TextView
         android:id="@+id/vdAdd"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
         android:visibility="gone"
         android:text="Hello"
         android:textSize="20sp"
-        android:layout_below="@+id/titleText"
+        android:layout_below="@id/titleText"
         />
 
     <ProgressBar
@@ -45,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/swipeRefreshLayout"
-        android:layout_below="@id/vdAdd"
+        android:layout_below="@id/progressBar"
         >
 
 

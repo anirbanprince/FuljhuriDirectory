@@ -1,10 +1,12 @@
 package com.proseobd.fuljhuridirectory;
 
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.helper.widget.Carousel;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -36,18 +37,18 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class UpListFragment extends Fragment {
 
     RecyclerView recycleView;
     ProgressBar progressBar;
-    SearchView search;
+    SearchView searchView;
     SwipeRefreshLayout swipeRefreshLayout;
 
     HashMap<String, String> hashMap;
     ArrayList<HashMap<String, String>> upMemberList = new ArrayList<>();
+    ArrayList<HashMap<String, String>> filterdupMemberList = new ArrayList<>();
 
 
 
@@ -65,6 +66,11 @@ public class UpListFragment extends Fragment {
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         progressBar = fragmentView.findViewById(R.id.progressBar);
         swipeRefreshLayout = fragmentView.findViewById(R.id.swipeRefreshLayout);
+
+
+
+
+
 
 
 
@@ -118,6 +124,7 @@ public class UpListFragment extends Fragment {
 
 
 
+
         return fragmentView;
     }
 
@@ -135,6 +142,7 @@ public class UpListFragment extends Fragment {
     public void loadData () {
 
         upMemberList = new ArrayList<>();
+        filterdupMemberList = new ArrayList<>();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
@@ -146,6 +154,7 @@ public class UpListFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         progressBar.setVisibility(View.GONE);
+                        upMemberList.clear(); // Clear the old data
 
                         Log.d("ServerRes", response.toString());
 
@@ -154,6 +163,10 @@ public class UpListFragment extends Fragment {
                             try {
 
                                 JSONObject jsonObject = response.getJSONObject(x);
+
+
+
+
 
                                 String name =  jsonObject.optString("name");
                                 String designation = jsonObject.optString("designation");
@@ -170,6 +183,7 @@ public class UpListFragment extends Fragment {
                                 hashMap.put("word_no", word_no);
                                 hashMap.put("email", email);
                                 upMemberList.add(hashMap);
+                                filterdupMemberList.add(hashMap);
 
 
 
@@ -179,8 +193,8 @@ public class UpListFragment extends Fragment {
                                 throw new RuntimeException(e);
                             }
 
-
                         }
+
 
                         RecycleAdapter recycleAdapter = new RecycleAdapter();
                         recycleView.setAdapter(recycleAdapter);
@@ -207,6 +221,9 @@ public class UpListFragment extends Fragment {
     //===================== Data Parsing END ====================//
     //===================== Data Parsing END ====================//
     //===================== Data Parsing PEND ====================//
+
+
+
 
     // =============== Recycler Adapter Start ==========//
     // =============== Recycler Adapter Start ==========//
@@ -314,8 +331,24 @@ public class UpListFragment extends Fragment {
     // =============== Recycler Adapter END ==========//
 
 
-
     /////////////////////////////////////////////////////////////////////////
+
+
+
+    // Search View Adapter /////////////////////////
+    // Search View Adapter /////////////////////////
+    // Search View Adapter /////////////////////////
+
+
+
+
+
+
+
+    // Search View Adapter END /////////////////////////
+    // Search View Adapter END /////////////////////////
+    // Search View Adapter END /////////////////////////
+
 
 
 

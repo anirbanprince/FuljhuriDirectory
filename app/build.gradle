@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -38,12 +39,13 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.play.services.ads
+    implementation libs.firebase.analytics
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
     // For Load Image Form hosting
-    implementation 'com.squareup.picasso:picasso:2.8'
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 
     // For parsing data form mysql database
     implementation 'com.android.volley:volley:1.2.1'
@@ -56,5 +58,9 @@ dependencies {
 
     //t Rex offline game
     implementation 'com.github.LionZXY.T-Rex-Android:trex-offline:1.0.0'
+
+
+    implementation platform('com.google.firebase:firebase-bom:33.5.1')
+    implementation 'com.google.firebase:firebase-analytics'
 
 }

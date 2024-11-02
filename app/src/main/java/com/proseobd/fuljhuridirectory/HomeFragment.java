@@ -85,12 +85,16 @@ public class HomeFragment extends Fragment {
         relLayout.setOnClickListener(v -> {
 
             if (cName.contains("ইউপি সদস্য")){
-
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, new UpListFragment());
                 fragmentTransaction.commit();
-                
+            }
+            else if (cName.contains("ইট , বালু , সিমেন্টের দোকান")) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new UpListFragment());
+                fragmentTransaction.commit();
             }
 
         });

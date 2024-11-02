@@ -1,12 +1,13 @@
 package com.proseobd.fuljhuridirectory;
 
+import static java.util.Locale.filter;
+
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.helper.widget.Carousel;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -27,9 +27,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.proseobd.controllers.DialogUtils;
-import com.proseobd.controllers.NetworkUtils;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.proseobd.fuljhuridirectory.adapters.UpMemberAdapter;
+import com.proseobd.fuljhuridirectory.controllers.DialogUtils;
+import com.proseobd.fuljhuridirectory.controllers.NetworkUtils;
+import com.proseobd.fuljhuridirectory.datamodels.UpMemberData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +39,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class UpListFragment extends Fragment {
@@ -46,9 +49,12 @@ public class UpListFragment extends Fragment {
     SearchView searchView;
     SwipeRefreshLayout swipeRefreshLayout;
 
-    HashMap<String, String> hashMap;
-    ArrayList<HashMap<String, String>> upMemberList = new ArrayList<>();
-    ArrayList<HashMap<String, String>> filterdupMemberList = new ArrayList<>();
+    List<UpMemberData> upMemberDataList;
+    private static String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/info.php";
+    UpMemberAdapter upMemberAdapter;
+
+//    HashMap<String, String> hashMap;
+//    ArrayList<HashMap<String, String>> upMemberList = new ArrayList<>();
 
 
 
@@ -62,6 +68,9 @@ public class UpListFragment extends Fragment {
         TextView vdAdd = fragmentView.findViewById(R.id.vdAdd);
 
         recycleView = (RecyclerView) fragmentView.findViewById(R.id.recycleView);
+        upMemberDataList = new ArrayList<>();
+
+
         recycleView.setHasFixedSize(true);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         progressBar = fragmentView.findViewById(R.id.progressBar);
@@ -69,13 +78,6 @@ public class UpListFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-        
 
 
 
@@ -126,9 +128,14 @@ public class UpListFragment extends Fragment {
 
 
         return fragmentView;
-    }
+    }      //-------------------onCreate END--------------------//
 
-    //-------------------onCreate END--------------------//
+
+
+
+
+
+
 
 
 
@@ -141,20 +148,17 @@ public class UpListFragment extends Fragment {
 
     public void loadData () {
 
-        upMemberList = new ArrayList<>();
-        filterdupMemberList = new ArrayList<>();
+//        upMemberList = new ArrayList<>();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+//        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
 
-        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
-
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        progressBar.setVisibility(View.GONE);
-                        upMemberList.clear(); // Clear the old data
+//                        progressBar.setVisibility(View.GONE);
 
                         Log.d("ServerRes", response.toString());
 
@@ -165,25 +169,32 @@ public class UpListFragment extends Fragment {
                                 JSONObject jsonObject = response.getJSONObject(x);
 
 
-
-
-
-                                String name =  jsonObject.optString("name");
+/*                                String name =  jsonObject.optString("name");
                                 String designation = jsonObject.optString("designation");
-                                String phone_number = jsonObject.optString("phone_number");
-                                String image_link = jsonObject.optString("image_link");
-                                String word_no = jsonObject.optString("word_no");
+                                String mobile = jsonObject.optString("mobile");
+                                String profileImage = jsonObject.optString("profileImage");
+                                String wordNo = jsonObject.optString("wordNo");
                                 String email = jsonObject.optString("email");
 
                                 hashMap = new HashMap<>();
                                 hashMap.put("name", name);
                                 hashMap.put("designation", designation);
-                                hashMap.put("phone_number", phone_number);
-                                hashMap.put("image_link", image_link);
-                                hashMap.put("word_no", word_no);
+                                hashMap.put("mobile", mobile);
+                                hashMap.put("profileImage", profileImage);
+                                hashMap.put("wordNo", wordNo);
                                 hashMap.put("email", email);
                                 upMemberList.add(hashMap);
-                                filterdupMemberList.add(hashMap);
+
+ */
+
+                                UpMemberData upMemberData = new UpMemberData();
+                                upMemberData.setName(jsonObject.getString("name"));
+                                upMemberData.setDesignation(jsonObject.getString("designation"));
+                                upMemberData.setMobile(jsonObject.getString("mobile"));
+                                upMemberData.setWordNo(jsonObject.getString("wordNo"));
+                                upMemberData.setProfileImage(jsonObject.getString("profileImage"));
+                                upMemberData.setProfileImage(jsonObject.getString("email"));
+                                upMemberDataList.add(upMemberData);
 
 
 
@@ -196,8 +207,8 @@ public class UpListFragment extends Fragment {
                         }
 
 
-                        RecycleAdapter recycleAdapter = new RecycleAdapter();
-                        recycleView.setAdapter(recycleAdapter);
+                        upMemberAdapter = new UpMemberAdapter(getActivity(), upMemberDataList);
+                        recycleView.setAdapter(upMemberAdapter);
 
 
 
@@ -225,6 +236,8 @@ public class UpListFragment extends Fragment {
 
 
 
+/*
+
     // =============== Recycler Adapter Start ==========//
     // =============== Recycler Adapter Start ==========//
     // =============== Recycler Adapter Start ==========//
@@ -232,11 +245,13 @@ public class UpListFragment extends Fragment {
     private class RecycleAdapter extends RecyclerView.Adapter < RecycleAdapter.recycleViewHolder > {
 
 
+
         private class recycleViewHolder extends RecyclerView.ViewHolder{
 
 
             ImageView profileImage, imgCall;
             TextView name, designation, wordNo, mobile, email;
+
 
 
             public recycleViewHolder(@NonNull View itemView) {
@@ -275,16 +290,17 @@ public class UpListFragment extends Fragment {
         public void onBindViewHolder(@NonNull recycleViewHolder holder, int position) {
 
             HashMap<String, String> hashMap = upMemberList.get(position);
-            String s_profileImage = hashMap.get("image_link");
+            String s_profileImage = hashMap.get("profileImage");
             String s_name = hashMap.get("name");
             String s_designation = hashMap.get("designation");
-            String s_wordNo = hashMap.get("word_no");
-            String s_mobile = hashMap.get("phone_number");
+            String s_wordNo = hashMap.get("wordNo");
+            String s_mobile = hashMap.get("mobile");
             String s_email = hashMap.get("email");
 
-            Picasso.get()
-                    .load(s_profileImage)
-                    .into(holder.profileImage);
+            Glide.with(holder.profileImage.getContext())
+                            .load(s_profileImage)
+                                    .into(holder.profileImage);
+
 
             holder.name.setText(s_name);
             holder.designation.setText(s_designation);
@@ -303,9 +319,7 @@ public class UpListFragment extends Fragment {
             });
 
 
-
         }
-
 
 
         @Override
@@ -316,28 +330,24 @@ public class UpListFragment extends Fragment {
         }
 
 
-
-
-
     }
 
 
 
-
-
-
     // =============== Recycler Adapter END ==========//
     // =============== Recycler Adapter END ==========//
     // =============== Recycler Adapter END ==========//
 
+
+ */
 
     /////////////////////////////////////////////////////////////////////////
 
 
 
-    // Search View Adapter /////////////////////////
-    // Search View Adapter /////////////////////////
-    // Search View Adapter /////////////////////////
+    // Search View Filter Method /////////////////////////
+    // Search View Filter Method  /////////////////////////
+    // Search View Filter Method  /////////////////////////
 
 
 
@@ -345,16 +355,14 @@ public class UpListFragment extends Fragment {
 
 
 
-    // Search View Adapter END /////////////////////////
-    // Search View Adapter END /////////////////////////
-    // Search View Adapter END /////////////////////////
+    // Search View Filter Method  END /////////////////////////
+    // Search View Filter Method  END /////////////////////////
+    // Search View Filter Method  END /////////////////////////
 
 
 
 
-
-
-
+    
 
 }
 

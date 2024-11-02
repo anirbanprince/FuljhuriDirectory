@@ -50,7 +50,7 @@ public class UpListFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
 
     List<UpMemberData> upMemberDataList;
-    private static String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/info.php";
+    private static String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
     UpMemberAdapter upMemberAdapter;
 
 //    HashMap<String, String> hashMap;
@@ -191,9 +191,9 @@ public class UpListFragment extends Fragment {
                                 upMemberData.setName(jsonObject.getString("name"));
                                 upMemberData.setDesignation(jsonObject.getString("designation"));
                                 upMemberData.setMobile(jsonObject.getString("mobile"));
-                                upMemberData.setWordNo(jsonObject.getString("wordNo"));
+                                upMemberData.setWordNo(jsonObject.getString("wordno"));
                                 upMemberData.setProfileImage(jsonObject.getString("profileImage"));
-                                upMemberData.setProfileImage(jsonObject.getString("email"));
+                                upMemberData.setEmail(jsonObject.getString("email"));
                                 upMemberDataList.add(upMemberData);
 
 

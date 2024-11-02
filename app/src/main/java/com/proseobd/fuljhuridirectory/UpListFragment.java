@@ -53,8 +53,6 @@ public class UpListFragment extends Fragment {
     private static String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
     UpMemberAdapter upMemberAdapter;
 
-//    HashMap<String, String> hashMap;
-//    ArrayList<HashMap<String, String>> upMemberList = new ArrayList<>();
 
 
 
@@ -65,16 +63,35 @@ public class UpListFragment extends Fragment {
 
         View fragmentView = inflater.inflate(R.layout.fragment_up_list, container, false);
 
-        TextView vdAdd = fragmentView.findViewById(R.id.vdAdd);
+        TextView vdAdd = (TextView) fragmentView.findViewById(R.id.vdAdd);
 
         recycleView = (RecyclerView) fragmentView.findViewById(R.id.recycleView);
-        upMemberDataList = new ArrayList<>();
-
-
         recycleView.setHasFixedSize(true);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        progressBar = fragmentView.findViewById(R.id.progressBar);
-        swipeRefreshLayout = fragmentView.findViewById(R.id.swipeRefreshLayout);
+
+        upMemberDataList = new ArrayList<>();
+
+        searchView = (SearchView) fragmentView.findViewById(R.id.searchView);
+        searchView.clearFocus();
+
+        progressBar = (ProgressBar) fragmentView.findViewById(R.id.progressBar);
+        swipeRefreshLayout = (SwipeRefreshLayout) fragmentView.findViewById(R.id.swipeRefreshLayout);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                filterList(newText);
+
+                return true;
+            }
+        });
 
 
 
@@ -128,15 +145,9 @@ public class UpListFragment extends Fragment {
 
 
         return fragmentView;
+
+
     }      //-------------------onCreate END--------------------//
-
-
-
-
-
-
-
-
 
 
 
@@ -148,17 +159,14 @@ public class UpListFragment extends Fragment {
 
     public void loadData () {
 
-//        upMemberList = new ArrayList<>();
-
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-//        String url ="https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
 
-//        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-//                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
 
                         Log.d("ServerRes", response.toString());
 
@@ -167,26 +175,6 @@ public class UpListFragment extends Fragment {
                             try {
 
                                 JSONObject jsonObject = response.getJSONObject(x);
-
-
-/*                                String name =  jsonObject.optString("name");
-                                String designation = jsonObject.optString("designation");
-                                String mobile = jsonObject.optString("mobile");
-                                String profileImage = jsonObject.optString("profileImage");
-                                String wordNo = jsonObject.optString("wordNo");
-                                String email = jsonObject.optString("email");
-
-                                hashMap = new HashMap<>();
-                                hashMap.put("name", name);
-                                hashMap.put("designation", designation);
-                                hashMap.put("mobile", mobile);
-                                hashMap.put("profileImage", profileImage);
-                                hashMap.put("wordNo", wordNo);
-                                hashMap.put("email", email);
-                                upMemberList.add(hashMap);
-
- */
-
                                 UpMemberData upMemberData = new UpMemberData();
                                 upMemberData.setName(jsonObject.getString("name"));
                                 upMemberData.setDesignation(jsonObject.getString("designation"));
@@ -197,21 +185,14 @@ public class UpListFragment extends Fragment {
                                 upMemberDataList.add(upMemberData);
 
 
-
-
-
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
                             }
 
                         }
 
-
                         upMemberAdapter = new UpMemberAdapter(getActivity(), upMemberDataList);
                         recycleView.setAdapter(upMemberAdapter);
-
-
-
 
                     }
                 }, new Response.ErrorListener() {
@@ -233,114 +214,6 @@ public class UpListFragment extends Fragment {
     //===================== Data Parsing END ====================//
     //===================== Data Parsing PEND ====================//
 
-
-
-
-/*
-
-    // =============== Recycler Adapter Start ==========//
-    // =============== Recycler Adapter Start ==========//
-    // =============== Recycler Adapter Start ==========//
-
-    private class RecycleAdapter extends RecyclerView.Adapter < RecycleAdapter.recycleViewHolder > {
-
-
-
-        private class recycleViewHolder extends RecyclerView.ViewHolder{
-
-
-            ImageView profileImage, imgCall;
-            TextView name, designation, wordNo, mobile, email;
-
-
-
-            public recycleViewHolder(@NonNull View itemView) {
-
-                super(itemView);
-
-
-                profileImage = itemView.findViewById(R.id.profileImage);
-                imgCall = itemView.findViewById(R.id.imgCall);
-                name = itemView.findViewById(R.id.name);
-                designation = itemView.findViewById(R.id.designation);
-                wordNo = itemView.findViewById(R.id.wordNo);
-                mobile = itemView.findViewById(R.id.mobile);
-                email = itemView.findViewById(R.id.email);
-
-            }
-
-
-        }
-
-
-        @NonNull
-        @Override
-        public recycleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-            LayoutInflater inflater = getLayoutInflater();
-            View myView = inflater.inflate(R.layout.up_members_list, parent, false);
-
-
-            return new recycleViewHolder(myView);
-        }
-
-
-
-        @Override
-        public void onBindViewHolder(@NonNull recycleViewHolder holder, int position) {
-
-            HashMap<String, String> hashMap = upMemberList.get(position);
-            String s_profileImage = hashMap.get("profileImage");
-            String s_name = hashMap.get("name");
-            String s_designation = hashMap.get("designation");
-            String s_wordNo = hashMap.get("wordNo");
-            String s_mobile = hashMap.get("mobile");
-            String s_email = hashMap.get("email");
-
-            Glide.with(holder.profileImage.getContext())
-                            .load(s_profileImage)
-                                    .into(holder.profileImage);
-
-
-            holder.name.setText(s_name);
-            holder.designation.setText(s_designation);
-            holder.wordNo.setText(s_wordNo);
-            holder.mobile.setText(s_mobile);
-            holder.email.setText(s_email);
-
-
-            holder.imgCall.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String pNumbre = holder.mobile.getText().toString();
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(pNumbre));
-                    startActivity(intent);
-                }
-            });
-
-
-        }
-
-
-        @Override
-        public int getItemCount() {
-
-
-            return upMemberList.size();
-        }
-
-
-    }
-
-
-
-    // =============== Recycler Adapter END ==========//
-    // =============== Recycler Adapter END ==========//
-    // =============== Recycler Adapter END ==========//
-
-
- */
-
     /////////////////////////////////////////////////////////////////////////
 
 
@@ -349,25 +222,29 @@ public class UpListFragment extends Fragment {
     // Search View Filter Method  /////////////////////////
     // Search View Filter Method  /////////////////////////
 
+    private void filterList(String text) {
 
+        List<UpMemberData> filteredList = new ArrayList<>();
+        for (UpMemberData item : upMemberDataList) {
+            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
 
+        if (filteredList.isEmpty()) {
+            upMemberAdapter.setFilteredList(upMemberDataList);
+        } else {
+            upMemberAdapter.setFilteredList(filteredList);
+        }
 
-
-
+    }
 
     // Search View Filter Method  END /////////////////////////
     // Search View Filter Method  END /////////////////////////
     // Search View Filter Method  END /////////////////////////
-
 
 
 
     
 
 }
-
-
-
-
-
-

@@ -57,6 +57,11 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
     public int getItemCount() {
         return upMemberDataList.size();
     }
+//// new line
+    public void setFilteredList(List<UpMemberData> upMemberDataList) {
+        this.upMemberDataList = upMemberDataList;
+        notifyDataSetChanged();
+    }
 
     public class vHolder extends RecyclerView.ViewHolder {
 

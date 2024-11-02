@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "756320580317",
+    "project_id": "fuljhuri-directory",
+    "storage_bucket": "fuljhuri-directory.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756320580317:android:b927bc03078fd04b2ae134",
+        "android_client_info": {
+          "package_name": "com.proseobd.fuljhuridirectory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy8IQXCOandDezVFAhu4njAcMhSz4GmMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -100,8 +100,6 @@ public class HomeFragment extends Fragment {
 
 
 
-
-
         return myView;
     }
 }
@@ -120,7 +118,7 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "ওয়াইফাই এবং ডিস কন্ট্রোল");
+        hashMap.put("catName" , "ইন্টারনেট এবং কেবল টিভি");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
@@ -140,7 +138,7 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "কামার - কুমারের দোকান");
+        hashMap.put("catName" , "কামার এবং কুমারের দোকান");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
@@ -152,20 +150,24 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "গ্যার্মেন্টস এবং কাপড়ের দোকান");
+        hashMap.put("catName" , "গার্মেন্টস এবং কাপড়ের দোকান");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "ঘাট এবং গাড়ি স্ট্যান্ড");
+        hashMap.put("catName" , "গাড়ি স্ট্যান্ড ( মোটরসাইকেল, ইজি-বাইক )");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "চায়ের দোকান");
         arrayList.add(hashMap);
 
+        hashMap =new HashMap<>();
+        hashMap.put("catName" , "জরুরী সেবা সমূহ");
+        arrayList.add(hashMap);
+
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "জুতোর দোকান");
+        hashMap.put("catName" , "জুতার দোকান");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
@@ -193,6 +195,10 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "পেট্রল / ডিজেল");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "ফলের দোকান");
         arrayList.add(hashMap);
 
@@ -205,7 +211,7 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "বিকাশ,নগদ,মোবাইল রিচার্জ");
+        hashMap.put("catName" , "বিকাশ, নগদ, মোবাইল রিচার্জ");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();

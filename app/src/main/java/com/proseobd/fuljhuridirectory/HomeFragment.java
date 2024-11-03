@@ -1,7 +1,5 @@
 package com.proseobd.fuljhuridirectory;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,7 +16,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 
 public class HomeFragment extends Fragment {
@@ -84,6 +81,7 @@ public class HomeFragment extends Fragment {
 
         relLayout.setOnClickListener(v -> {
 
+            assert cName != null;
             if (cName.contains("ইউপি সদস্য")){
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -93,7 +91,7 @@ public class HomeFragment extends Fragment {
             else if (cName.contains("ইট , বালু , সিমেন্টের দোকান")) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new UpListFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
                 fragmentTransaction.commit();
             }
 

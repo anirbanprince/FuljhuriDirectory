@@ -19,7 +19,7 @@ public class BricksFragment extends Fragment {
 
         View fragmentView = inflater.inflate(R.layout.fragment_bricks, container, false);
 
-        recyclerView = (RecyclerView) fragmentView.findViewById(R.id.recyclerView);
+        recyclerView = fragmentView.findViewById(R.id.recyclerView);
 
 
 

@@ -1,6 +1,5 @@
 package com.proseobd.fuljhuridirectory.adapters;
 
-import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +40,7 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
 
         View myView = inflater.inflate(R.layout.up_members_list, parent, false);
 
-        return new vHolder(myView) ;
+        return new vHolder(myView);
     }
 
     @Override
@@ -58,32 +57,26 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
 
         holder.setIsRecyclable(false);
 
-        holder.imgCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.mobile.setClickable(true);
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + upMemberDataList.get(position).getMobile()));
-                holder.mobile.getContext().startActivity(intent);
 
-            }
+        holder.imgCall.setOnClickListener(v -> {
+        holder.mobile.setClickable(true);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + upMemberDataList.get(position).getMobile()));
+        holder.mobile.getContext().startActivity(intent);
+    });
 
-        });
 
-        holder.imgEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.imgEmail.setClickable(true);
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:" + upMemberDataList.get(position).getEmail()));
-                holder.email.getContext().startActivity(intent);
-            }
+        holder.imgEmail.setOnClickListener(v -> {
+            holder.imgEmail.setClickable(true);
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:" + upMemberDataList.get(position).getEmail()));
+            holder.email.getContext().startActivity(intent);
         });
 
 
     }
 
-    public class vHolder extends RecyclerView.ViewHolder {
+    public static class vHolder extends RecyclerView.ViewHolder {
 
         TextView name, designation, mobile, wordNo, email;
         ImageView profileImage, imgCall, imgEmail;
@@ -126,7 +119,7 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
                 filteredList.addAll(backUpUpMemberDataList);
             } else {
                 for (UpMemberData singleMemberData : backUpUpMemberDataList) {
-                    if (singleMemberData.getName().toString().toLowerCase().contains(keyword.toString().toLowerCase())) {
+                    if (singleMemberData.getName().toLowerCase().contains(keyword.toString().toLowerCase())) {
                         filteredList.add(singleMemberData);
                     }
                 }

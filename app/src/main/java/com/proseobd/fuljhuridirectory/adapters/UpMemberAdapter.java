@@ -1,6 +1,10 @@
 package com.proseobd.fuljhuridirectory.adapters;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,19 +52,41 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
         holder.mobile.setText(upMemberDataList.get(position).getMobile());
         holder.wordNo.setText(upMemberDataList.get(position).getWordNo());
         holder.email.setText(upMemberDataList.get(position).getEmail());
-
         Glide.with(holder.profileImage.getContext())
                 .load(upMemberDataList.get(position).getProfileImage())
                 .into(holder.profileImage);
-        
+
         holder.setIsRecyclable(false);
+
+        holder.imgCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.mobile.setClickable(true);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + upMemberDataList.get(position).getMobile()));
+                holder.mobile.getContext().startActivity(intent);
+
+            }
+
+        });
+
+        holder.imgEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.imgEmail.setClickable(true);
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:" + upMemberDataList.get(position).getEmail()));
+                holder.email.getContext().startActivity(intent);
+            }
+        });
+
 
     }
 
     public class vHolder extends RecyclerView.ViewHolder {
 
         TextView name, designation, mobile, wordNo, email;
-        ImageView profileImage;
+        ImageView profileImage, imgCall, imgEmail;
 
         public vHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,6 +97,9 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
             wordNo = itemView.findViewById(R.id.wordNo);
             email = itemView.findViewById(R.id.email);
             profileImage = itemView.findViewById(R.id.profileImage);
+
+            imgCall = itemView.findViewById(R.id.imgCall);
+            imgEmail = itemView.findViewById(R.id.imgEmail);
         }
     }
 

@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.proseobd.fuljhuridirectory" />
+                  <option name="mobileSdkAppId" value="1:756320580317:android:b927bc03078fd04b2ae134" />
+                  <option name="projectId" value="fuljhuri-directory" />
+                  <option name="projectNumber" value="756320580317" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

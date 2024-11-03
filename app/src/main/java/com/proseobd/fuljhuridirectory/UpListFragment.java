@@ -73,6 +73,8 @@ public class UpListFragment extends Fragment {
 
         searchView = (SearchView) fragmentView.findViewById(R.id.searchView);
         searchView.clearFocus();
+        searchView.setQueryHint("অনুসন্ধান করুন...");
+
 
         progressBar = (ProgressBar) fragmentView.findViewById(R.id.progressBar);
         swipeRefreshLayout = (SwipeRefreshLayout) fragmentView.findViewById(R.id.swipeRefreshLayout);
@@ -87,9 +89,9 @@ public class UpListFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                filterList(newText);
+                upMemberAdapter.getFilter().filter(newText);
 
-                return true;
+                return false;
             }
         });
 
@@ -139,16 +141,10 @@ public class UpListFragment extends Fragment {
         });
 
 
-
-
-
-
-
         return fragmentView;
 
 
     }      //-------------------onCreate END--------------------//
-
 
 
 
@@ -167,6 +163,7 @@ public class UpListFragment extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         progressBar.setVisibility(View.GONE);
+                        upMemberDataList.clear();
 
                         Log.d("ServerRes", response.toString());
 
@@ -213,38 +210,6 @@ public class UpListFragment extends Fragment {
     //===================== Data Parsing END ====================//
     //===================== Data Parsing END ====================//
     //===================== Data Parsing PEND ====================//
-
-    /////////////////////////////////////////////////////////////////////////
-
-
-
-    // Search View Filter Method /////////////////////////
-    // Search View Filter Method  /////////////////////////
-    // Search View Filter Method  /////////////////////////
-
-    private void filterList(String text) {
-
-        List<UpMemberData> filteredList = new ArrayList<>();
-        for (UpMemberData item : upMemberDataList) {
-            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(item);
-            }
-        }
-
-        if (filteredList.isEmpty()) {
-            upMemberAdapter.setFilteredList(upMemberDataList);
-        } else {
-            upMemberAdapter.setFilteredList(filteredList);
-        }
-
-    }
-
-    // Search View Filter Method  END /////////////////////////
-    // Search View Filter Method  END /////////////////////////
-    // Search View Filter Method  END /////////////////////////
-
-
-
     
 
 }

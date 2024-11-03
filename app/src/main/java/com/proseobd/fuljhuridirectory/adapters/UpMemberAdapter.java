@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,16 +16,19 @@ import com.bumptech.glide.Glide;
 import com.proseobd.fuljhuridirectory.R;
 import com.proseobd.fuljhuridirectory.datamodels.UpMemberData;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolder> {
+public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolder> implements Filterable {
 
     LayoutInflater inflater;
     List<UpMemberData> upMemberDataList;
+    List<UpMemberData> backUpUpMemberDataList;
 
     public UpMemberAdapter (Context cTx, List<UpMemberData> upMemberDataList) {
         this.inflater = LayoutInflater.from(cTx);
         this.upMemberDataList = upMemberDataList;
+        backUpUpMemberDataList = new ArrayList<>(upMemberDataList);
     }
 
     @NonNull
@@ -47,20 +52,9 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
         Glide.with(holder.profileImage.getContext())
                 .load(upMemberDataList.get(position).getProfileImage())
                 .into(holder.profileImage);
+        
+        holder.setIsRecyclable(false);
 
-
-
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return upMemberDataList.size();
-    }
-//// new line
-    public void setFilteredList(List<UpMemberData> upMemberDataList) {
-        this.upMemberDataList = upMemberDataList;
-        notifyDataSetChanged();
     }
 
     public class vHolder extends RecyclerView.ViewHolder {
@@ -79,5 +73,51 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
             profileImage = itemView.findViewById(R.id.profileImage);
         }
     }
+
+    @Override
+    public int getItemCount() {
+        return upMemberDataList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+
+
+        return filter;
+    }
+
+
+    Filter filter = new Filter() {
+        @Override
+
+        //backgroudn thread
+        protected FilterResults performFiltering(CharSequence keyword) {
+            List<UpMemberData> filteredList = new ArrayList<>();
+            if (keyword.toString().isEmpty()) {
+                filteredList.addAll(backUpUpMemberDataList);
+            } else {
+                for (UpMemberData singleMemberData : backUpUpMemberDataList) {
+                    if (singleMemberData.getName().toString().toLowerCase().contains(keyword.toString().toLowerCase())) {
+                        filteredList.add(singleMemberData);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+            return filterResults;
+
+        }
+
+        //main UI thread
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            upMemberDataList.clear();
+            upMemberDataList.addAll((List<UpMemberData>) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
 }

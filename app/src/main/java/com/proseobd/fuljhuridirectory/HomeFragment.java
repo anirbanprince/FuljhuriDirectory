@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
 
         gridView = fragmentView.findViewById(R.id.gridView);
 
-        creattable();
+        createtable();
 
         MyAdapter myAdapter = new MyAdapter();
         gridView.setAdapter(myAdapter);
@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
 
 
 //======================   ArrayList ========================//
-    public void creattable () {
+    public void createtable () {
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "ইউপি সদস্য");

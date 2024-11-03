@@ -287,27 +287,27 @@ public class HomeFragment extends Fragment {
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "কাচা বাজার");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.organic_food));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "কাঠমিস্ত্রী / ফার্নিচার");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.carpenter));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "কামার এবং কুমারের দোকান");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.pottery));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "কীটনাশক এবং পোল্ট্রি ফিড");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.pesticide));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "গ্যারেজ");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.garage));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();

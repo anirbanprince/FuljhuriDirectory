@@ -43,6 +43,17 @@
         />
 
 
+    <ImageView
+        android:id="@+id/imgUP"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/fuljhuri_up"
+        android:padding="8dp"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/progressBar"
+        />
+
+
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -54,7 +65,7 @@
         app:searchIcon="@drawable/search"
         app:defaultQueryHint="অনুসন্ধান করুন..."
         app:iconifiedByDefault="false"
-        android:layout_below="@id/progressBar"
+        android:layout_below="@id/imgUP"
         />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

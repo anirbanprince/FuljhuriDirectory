@@ -138,6 +138,10 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "কাঠমিস্ত্রী/ফার্নিচার");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "কামার - কুমারের দোকান");
         arrayList.add(hashMap);
 
@@ -248,6 +252,10 @@ public class HomeFragment extends Fragment {
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "যানবাহন");
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
+        hashMap.put("catName" , "লাইব্রেরি এবং স্টেশনারি");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();

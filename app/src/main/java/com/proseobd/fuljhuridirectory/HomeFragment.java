@@ -138,7 +138,7 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "কাঠমিস্ত্রী/ফার্নিচার");
+        hashMap.put("catName" , "কাঠমিস্ত্রী / ফার্নিচার");
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
@@ -165,9 +165,6 @@ public class HomeFragment extends Fragment {
         hashMap.put("catName" , "চায়ের দোকান");
         arrayList.add(hashMap);
 
-        hashMap =new HashMap<>();
-        hashMap.put("catName" , "চায়ের দোকান");
-        arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "জুতোর দোকান");
@@ -274,7 +271,6 @@ public class HomeFragment extends Fragment {
         hashMap =new HashMap<>();
         hashMap.put("catName" , "স্টুডিও এবং কম্পিউটার টাইপ");
         arrayList.add(hashMap);
-
 
 
         hashMap =new HashMap<>();

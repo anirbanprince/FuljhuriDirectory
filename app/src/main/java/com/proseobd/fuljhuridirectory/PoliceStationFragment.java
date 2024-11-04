@@ -143,7 +143,7 @@ public class PoliceStationFragment extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            View myView = getLayoutInflater().inflate(R.layout.emergency_single_layout, null);
+            View myView = getLayoutInflater().inflate(R.layout.emergency_single_layout, parent, false);
 
             TextView name = myView.findViewById(R.id.name);
             TextView designation = myView.findViewById(R.id.designation);
@@ -160,7 +160,7 @@ public class PoliceStationFragment extends Fragment {
             designation.setText(hashMap.get("designation"));
             mobile.setText(hashMap.get("mobile"));
             email.setText(hashMap.get("email"));
-            Glide.with(getActivity())
+            Glide.with(requireActivity())
                     .load(hashMap.get("profileImage"))
                     .error(R.drawable.dummy_image)
                     .into(profileImage);

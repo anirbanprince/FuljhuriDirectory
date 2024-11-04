@@ -475,7 +475,7 @@ public class HomeFragment extends Fragment {
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "অন্যান্য");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.more));
         arrayList.add(hashMap);
 
 

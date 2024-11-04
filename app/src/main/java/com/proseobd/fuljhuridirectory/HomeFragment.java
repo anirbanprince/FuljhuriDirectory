@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
             else if (cName.contains("জরুরী সেবা সমূহ")) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new EmergencyFragment());
                 fragmentTransaction.commit();
             }
             else if (cName.contains("ইট , বালু , সিমেন্টের দোকান")) {

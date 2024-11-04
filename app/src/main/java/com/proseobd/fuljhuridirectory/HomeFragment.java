@@ -402,43 +402,43 @@ public class HomeFragment extends Fragment {
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "মাংসের দোকান");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.meat_counter));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "মাছের দোকান ");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.fish));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "মুচি");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.cobbler));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "মুদি দোকান");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.shopping_cart));
         arrayList.add(hashMap);
 
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "মোবাইল এবং অন্যান্য ইলেকট্রনিক্স রিপেয়ার");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.technician));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "যানবাহন");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.vehicle));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "লাইব্রেরি এবং স্টেশনারি");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.library));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "শিক্ষা প্রতিষ্ঠান");
-        hashMap.put("img" , String.valueOf(R.drawable.fuljhuri_up_icon));
+        hashMap.put("img" , String.valueOf(R.drawable.education));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();

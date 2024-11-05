@@ -54,32 +54,69 @@ public class HospitalFragment extends Fragment {
     private void table() {
 
 
+        arrayList.clear();
+
         hashMap = new HashMap<>();
-        hashMap.put("name", "জেনারেলহাসপাতাল বরগুনা।");
-        hashMap.put("address", "বরগুনা জেলা সদর।");
-        hashMap.put("nameOH", "ডা: এ.এইচ,এম জহিরুল ইসলাম সিভিল। সার্জন,বরগুনা।");
+        hashMap.put("name", "* জেনারেল হাসপাতাল, বরগুনা।");
+        hashMap.put("address", "* বরগুনা জেলা সদর।");
+        hashMap.put("nameOH", "* ডা: এ.এইচ,এম জহিরুল ইসলাম সিভিল। সার্জন,বরগুনা।");
         hashMap.put("mobileOH", "০৪৪৮৬২৩৮৬");
-        hashMap.put("profileImage", "http://proseobd.com/apps/fuljhuridirectory/emergency/hospital/barguna_hospital.png");
         arrayList.add(hashMap);
 
 
         hashMap = new HashMap<>();
-        hashMap.put("name", "আমতলী উপজেলা স্বাস্থ্য কমপ্লেক্স।");
-        hashMap.put("address", "আমতলী উপজেলা সদর।");
-        hashMap.put("nameOH", "ডা: মদন গোপাল পাল। উপজেলা স্বাস্থ্য ও প: প: কর্মকর্তা।");
+        hashMap.put("name", "* আমতলী উপজেলা স্বাস্থ্য কমপ্লেক্স।");
+        hashMap.put("address", "* আমতলী উপজেলা সদর।");
+        hashMap.put("nameOH", "* ডা: মদন গোপাল পাল। উপজেলা স্বাস্থ্য ও প: প: কর্মকর্তা।");
         hashMap.put("mobileOH", "০৪৪৫২৫৬০১৬");
-        hashMap.put("profileImage", "http://proseobd.com/apps/fuljhuridirectory/emergency/hospital/barguna_hospital.png");
         arrayList.add(hashMap);
 
 
         hashMap = new HashMap<>();
-        hashMap.put("name", "বেতাগী উপজেলা স্বাস্থ্য কমপ্লেক্স।");
-        hashMap.put("address", "বেতাগী উপজেলা সদর।");
-        hashMap.put("nameOH", "ডা মো:আলমগীর হোসেন। উপজেলা স্বাস্থ্য ও প: প: কর্মকর্তা।");
+        hashMap.put("name", "* বেতাগী উপজেলা স্বাস্থ্য কমপ্লেক্স।");
+        hashMap.put("address", "* বেতাগী উপজেলা সদর।");
+        hashMap.put("nameOH", "* ডা মো:আলমগীর হোসেন। উপজেলা স্বাস্থ্য ও প: প: কর্মকর্তা।");
         hashMap.put("mobileOH", "০৪৪৫৪৫৬০৩০");
-        hashMap.put("profileImage", "http://proseobd.com/apps/fuljhuridirectory/emergency/hospital/barguna_hospital.png");
         arrayList.add(hashMap);
 
+        hashMap = new HashMap<>();
+        hashMap.put("name", "* বামনা উপজেলা স্বাস্থ্য কমপ্লেক্স।");
+        hashMap.put("address", "* বামনা উপজেলা সদর।");
+        hashMap.put("nameOH", "* ডা: মো: আবুল কালাম আজাদ। উপজেলা স্বাস্থ্য ও প: প: কর্মকর্তা।");
+        hashMap.put("mobileOH", "০৪৪৫৩৫৬০৭৬");
+        arrayList.add(hashMap);
+
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "* পাথরঘাটা উপজেলা স্বাস্থ্য কমপ্লেক্সপ্লক্স।");
+        hashMap.put("address", "* পাথরঘাটা উপজেলা সদর।");
+        hashMap.put("nameOH", "* ডা: অমল চন্দ্র রায়। উপজেলা স্বাস্থ্য ও প: প: কর্মকর্তা।");
+        hashMap.put("mobileOH", "০৪৪৫৫৭৫০০২");
+        arrayList.add(hashMap);
+
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "* বরগুনা সেন্ট্রাল ক্লিনিক।");
+        hashMap.put("address", "* ডিকেপি রোড, বরগুনা।");
+        hashMap.put("nameOH", "* প্রো: মো: মনিরুল ইসলাম।");
+        hashMap.put("mobileOH", "০১৭২৫২৫৫১৮০");
+        arrayList.add(hashMap);
+
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "* ডক্টরস কেয়ার ক্লিনিক ও হসপিটাল।");
+        hashMap.put("address", "* বকলেজ রোড, বরগুনা।");
+        hashMap.put("nameOH", "* প্রো: আকলিমা বেগম।");
+        hashMap.put("mobileOH", "০১৭১২৬২৭৯৮৯");
+        arrayList.add(hashMap);
+
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "* শাপলা ক্লিনিক।");
+        hashMap.put("address", "* হাসপাতাল রোড, পাথরঘাটা।");
+        hashMap.put("nameOH", "* প্রো: মো: মকবুল হোসেন মিলন।");
+        hashMap.put("mobileOH", "০১৭২২৫৪৬৩৮২");
+        arrayList.add(hashMap);
 
 
 
@@ -124,7 +161,7 @@ public class HospitalFragment extends Fragment {
             TextView address = myView.findViewById(R.id.address);
             TextView nameOH = myView.findViewById(R.id.nameOH);
             TextView mobileOH = myView.findViewById(R.id.mobileOH);
-            ImageView profileImage = myView.findViewById(R.id.profileImage);
+//            ImageView profileImage = myView.findViewById(R.id.profileImage);
             ImageView imgCall = myView.findViewById(R.id.imgCall);
 
             nameOH.startAnimation(title_animation);
@@ -135,15 +172,17 @@ public class HospitalFragment extends Fragment {
             address.setText(hashMap.get("address"));
             nameOH.setText(hashMap.get("nameOH"));
             mobileOH.setText(hashMap.get("mobileOH"));
-            Glide.with(requireActivity())
+/*            Glide.with(requireActivity())
                     .load(hashMap.get("profileImage"))
                     .error(R.drawable.no_image)
                     .into(profileImage);
 
+ */
+
             imgCall.setOnClickListener(v -> {
                 nameOH.setClickable(true);
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + hashMap.get("mobileOH")));
+                intent.setData(Uri.parse("tel:" + arrayList.get(position).get("mobileOH")));
                 nameOH.getContext().startActivity(intent);
             });
 

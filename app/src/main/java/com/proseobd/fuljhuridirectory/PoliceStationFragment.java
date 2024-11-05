@@ -52,6 +52,8 @@ public class PoliceStationFragment extends Fragment {
     private void createTable() {
 
 
+        arrayList.clear();
+
         hashMap = new HashMap<>();
         hashMap.put("name", "মোঃ আলী আহমেদ");
         hashMap.put("designation", "অফিসার ইনচার্জ, বরগুনা থানা, বরগুনা।");
@@ -168,14 +170,14 @@ public class PoliceStationFragment extends Fragment {
             imgCall.setOnClickListener(v -> {
                 mobile.setClickable(true);
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + hashMap.get("mobile")));
+                intent.setData(Uri.parse("tel:" + arrayList.get(position).get("mobile")));
                 mobile.getContext().startActivity(intent);
             });
 
             imgEmail.setOnClickListener(v ->{
                 email.setClickable(true);
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:" + hashMap.get("email")));
+                intent.setData(Uri.parse("mailto:" + arrayList.get(position).get("email")));
                 email.getContext().startActivity(intent);
             });
 

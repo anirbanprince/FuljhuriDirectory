@@ -1,8 +1,6 @@
 package com.proseobd.fuljhuridirectory;
 
-
 import android.os.Bundle;
-
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -17,47 +15,43 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-
-import com.proseobd.fuljhuridirectory.adapters.UpMemberAdapter;
+import com.proseobd.fuljhuridirectory.adapters.PharmacyAdapter;
 import com.proseobd.fuljhuridirectory.controllers.DialogUtils;
 import com.proseobd.fuljhuridirectory.controllers.NetworkUtils;
-import com.proseobd.fuljhuridirectory.datamodels.UpMemberData;
+import com.proseobd.fuljhuridirectory.datamodels.PharmacyData;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class UpListFragment extends Fragment {
+public class PharmacyFragment extends Fragment {
 
     RecyclerView recycleView;
     ProgressBar progressBar;
     SearchView searchView;
     SwipeRefreshLayout swipeRefreshLayout;
 
-    List<UpMemberData> upMemberDataList;
-    UpMemberAdapter upMemberAdapter;
+    TextView vdAdd;
 
+    PharmacyAdapter pharmacyAdapter;
 
+    List<PharmacyData> pharmacyDataList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View fragmentView = inflater.inflate(R.layout.fragment_up_list, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_pharmacy, container, false);
 
-        TextView vdAdd = fragmentView.findViewById(R.id.vdAdd);
+        vdAdd = fragmentView.findViewById(R.id.vdAdd);
 
         recycleView = fragmentView.findViewById(R.id.recycleView);
         recycleView.setHasFixedSize(true);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        upMemberDataList = new ArrayList<>();
 
         searchView = fragmentView.findViewById(R.id.searchView);
         searchView.clearFocus();
@@ -66,24 +60,6 @@ public class UpListFragment extends Fragment {
 
         progressBar = fragmentView.findViewById(R.id.progressBar);
         swipeRefreshLayout = fragmentView.findViewById(R.id.swipeRefreshLayout);
-
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                upMemberAdapter.getFilter().filter(newText);
-
-                return false;
-            }
-        });
-
-
 
 
 
@@ -110,7 +86,7 @@ public class UpListFragment extends Fragment {
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
 
-            if (NetworkUtils.isInternetAvailable(getActivity())) {
+            if (NetworkUtils.isInternetAvailable(requireActivity())) {
                 loadData();
                 swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark),
                         getResources().getColor(android.R.color.holo_orange_dark),
@@ -126,66 +102,72 @@ public class UpListFragment extends Fragment {
         });
 
 
+
+
+
+
         return fragmentView;
-
-
-    }      //-------------------onCreate END--------------------//
+    }
 
 
 
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
-    //===================== Data Parsing Privet Methode ====================//
+    //////////////////   Pars Data Form Server   //////////////////
 
 
     private void loadData () {
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 
+        RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
         progressBar.setVisibility(View.VISIBLE);
-        String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
-                response -> {
-                    progressBar.setVisibility(View.GONE);
-                    upMemberDataList.clear();
 
-                    Log.d("ServerRes", response.toString());
+        String url = "https://proseobd.com/apps/fuljhuridirectory/farmecy/view.php";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, response -> {
+            Log.d("ServerRes", response.toString());
 
-                    for (int x=0; x<response.length(); x++){
-
-                        try {
-
-                            JSONObject jsonObject = response.getJSONObject(x);
-                            UpMemberData upMemberData = new UpMemberData();
-                            upMemberData.setName(jsonObject.getString("name"));
-                            upMemberData.setDesignation(jsonObject.getString("designation"));
-                            upMemberData.setMobile(jsonObject.getString("mobile"));
-                            upMemberData.setWordNo(jsonObject.getString("wordno"));
-                            upMemberData.setProfileImage(jsonObject.getString("profileImage"));
-                            upMemberData.setEmail(jsonObject.getString("email"));
-                            upMemberDataList.add(upMemberData);
+            progressBar.setVisibility(View.GONE);
+            for (int x=0; x < response.length(); x++) {
 
 
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
 
-                    }
+                try {
 
-                    upMemberAdapter = new UpMemberAdapter(getActivity(), upMemberDataList);
-                    recycleView.setAdapter(upMemberAdapter);
+                    JSONObject jsonObject = response.getJSONObject(x);
 
-                }, error -> DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "সার্ভার এরর!"));
+                    PharmacyData pharmacyData = new PharmacyData();
 
+                    pharmacyData.setName(jsonObject.getString("name"));
+                    pharmacyData.setOwner(jsonObject.getString("owner"));
+                    pharmacyData.setAddress(jsonObject.getString("address"));
+                    pharmacyData.setMobile(jsonObject.getString("mobile"));
+                    pharmacyData.setEmail(jsonObject.getString("email"));
+                    pharmacyData.setProfileImage(jsonObject.getString("profileImage"));
+                    pharmacyDataList.add(pharmacyData);
+
+
+
+
+
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+
+            pharmacyAdapter = new PharmacyAdapter(requireActivity(), pharmacyDataList);
+            recycleView.setAdapter(pharmacyAdapter);
+
+
+
+        }, error -> DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "সার্ভার এরর!"));
 
         requestQueue.add(jsonArrayRequest);
 
     }
 
+    //===================== Data Parsing END ====================//
 
-    //===================== Data Parsing END ====================//
-    //===================== Data Parsing END ====================//
-    //===================== Data Parsing PEND ====================//
+
+
 
 
 }

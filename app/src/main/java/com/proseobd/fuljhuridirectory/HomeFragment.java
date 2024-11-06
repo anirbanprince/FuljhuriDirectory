@@ -266,6 +266,11 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "ফার্মেসি");
+        hashMap.put("img" , String.valueOf(R.drawable.medicine));
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "ইট , বালু , সিমেন্টের দোকান");
         hashMap.put("img" , String.valueOf(R.drawable.cement_icon));
         arrayList.add(hashMap);
@@ -363,11 +368,6 @@ public class HomeFragment extends Fragment {
         hashMap =new HashMap<>();
         hashMap.put("catName" , "ফলের দোকান");
         hashMap.put("img" , String.valueOf(R.drawable.fruits));
-        arrayList.add(hashMap);
-
-        hashMap =new HashMap<>();
-        hashMap.put("catName" , "ফার্মেসি");
-        hashMap.put("img" , String.valueOf(R.drawable.medicine));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();

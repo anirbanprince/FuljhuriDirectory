@@ -15,14 +15,21 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.proseobd.fuljhuridirectory.adapters.PharmacyAdapter;
+import com.proseobd.fuljhuridirectory.adapters.UpMemberAdapter;
 import com.proseobd.fuljhuridirectory.controllers.DialogUtils;
 import com.proseobd.fuljhuridirectory.controllers.NetworkUtils;
 import com.proseobd.fuljhuridirectory.datamodels.PharmacyData;
+import com.proseobd.fuljhuridirectory.datamodels.UpMemberData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -121,49 +128,53 @@ public class PharmacyFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
 
         String url = "https://proseobd.com/apps/fuljhuridirectory/farmecy/view.php";
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, response -> {
-            Log.d("ServerRes", response.toString());
 
-            progressBar.setVisibility(View.GONE);
-            for (int x=0; x < response.length(); x++) {
-
-
-
-                try {
-
-                    JSONObject jsonObject = response.getJSONObject(x);
-
-                    PharmacyData pharmacyData = new PharmacyData();
-
-                    pharmacyData.setName(jsonObject.getString("name"));
-                    pharmacyData.setOwner(jsonObject.getString("owner"));
-                    pharmacyData.setAddress(jsonObject.getString("address"));
-                    pharmacyData.setMobile(jsonObject.getString("mobile"));
-                    pharmacyData.setEmail(jsonObject.getString("email"));
-                    pharmacyData.setProfileImage(jsonObject.getString("profileImage"));
-                    pharmacyDataList.add(pharmacyData);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                progressBar.setVisibility(View.GONE);
+                Log.d("ServerRes", response.toString());
 
 
+                for (int x=0; x<response.length(); x++){
 
+                    try {
 
+                        JSONObject jsonObject = response.getJSONObject(x);
+                        PharmacyData pharmacyData = new PharmacyData();
+                        pharmacyData.setName(jsonObject.getString("name"));
+                        pharmacyData.setOwner(jsonObject.getString("owner"));
+                        pharmacyData.setAddress(jsonObject.getString("address"));
+                        pharmacyData.setMobile(jsonObject.getString("mobile"));
+                        pharmacyData.setEmail(jsonObject.getString("email"));
+                        pharmacyData.setProfileImage(jsonObject.getString("profileImage"));
+                        pharmacyDataList.add(pharmacyData);
 
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
+
+                pharmacyAdapter = new PharmacyAdapter(getActivity(), pharmacyDataList);
+                recycleView.setAdapter(pharmacyAdapter);
+
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
+                DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "সার্ভার এরর!");
 
-            pharmacyAdapter = new PharmacyAdapter(requireActivity(), pharmacyDataList);
-            recycleView.setAdapter(pharmacyAdapter);
-
-
-
-        }, error -> DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "সার্ভার এরর!"));
+            }
+        });
 
         requestQueue.add(jsonArrayRequest);
 
-    }
 
+
+
+    }
     //===================== Data Parsing END ====================//
 
 

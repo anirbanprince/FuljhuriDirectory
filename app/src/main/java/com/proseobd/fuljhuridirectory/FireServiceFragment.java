@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 
 public class FireServiceFragment extends Fragment {

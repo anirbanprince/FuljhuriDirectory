@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -172,12 +170,6 @@ public class HospitalFragment extends Fragment {
             address.setText(hashMap.get("address"));
             nameOH.setText(hashMap.get("nameOH"));
             mobileOH.setText(hashMap.get("mobileOH"));
-/*            Glide.with(requireActivity())
-                    .load(hashMap.get("profileImage"))
-                    .error(R.drawable.no_image)
-                    .into(profileImage);
-
- */
 
             imgCall.setOnClickListener(v -> {
                 nameOH.setClickable(true);

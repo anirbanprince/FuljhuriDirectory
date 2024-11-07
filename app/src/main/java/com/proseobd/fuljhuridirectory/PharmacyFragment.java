@@ -107,7 +107,8 @@ public class PharmacyFragment extends Fragment {
 
             if (NetworkUtils.isInternetAvailable(requireActivity())) {
                 loadData();
-                swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark),
+                swipeRefreshLayout.setColorSchemeColors(
+                        getResources().getColor(android.R.color.holo_blue_dark),
                         getResources().getColor(android.R.color.holo_orange_dark),
                         getResources().getColor(android.R.color.holo_green_dark),
                         getResources().getColor(android.R.color.holo_red_dark));

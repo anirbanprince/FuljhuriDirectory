@@ -110,9 +110,10 @@ public class UpListFragment extends Fragment {
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
 
-            if (NetworkUtils.isInternetAvailable(getActivity())) {
+            if (NetworkUtils.isInternetAvailable(requireActivity())) {
                 loadData();
-                swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark),
+                swipeRefreshLayout.setColorSchemeColors(
+                        getResources().getColor(android.R.color.holo_blue_dark),
                         getResources().getColor(android.R.color.holo_orange_dark),
                         getResources().getColor(android.R.color.holo_green_dark),
                         getResources().getColor(android.R.color.holo_red_dark));
@@ -140,7 +141,7 @@ public class UpListFragment extends Fragment {
 
     private void loadData () {
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
 
         progressBar.setVisibility(View.VISIBLE);
         String url = "https://proseobd.com/apps/fuljhuridirectory/upmembers/view.php";

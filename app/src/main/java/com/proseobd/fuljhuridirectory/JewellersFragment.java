@@ -20,18 +20,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.proseobd.fuljhuridirectory.adapters.JewellersAdapter;
-import com.proseobd.fuljhuridirectory.adapters.PharmacyAdapter;
 import com.proseobd.fuljhuridirectory.controllers.DialogUtils;
 import com.proseobd.fuljhuridirectory.controllers.NetworkUtils;
 import com.proseobd.fuljhuridirectory.datamodels.JewellersData;
-import com.proseobd.fuljhuridirectory.datamodels.PharmacyData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class JewellersFragment extends Fragment {
@@ -112,7 +109,8 @@ public class JewellersFragment extends Fragment {
 
             if (NetworkUtils.isInternetAvailable(requireActivity())) {
                 loadData();
-                swipeRefreshLayout.setColorSchemeColors(getResources().getColor(android.R.color.holo_blue_dark),
+                swipeRefreshLayout.setColorSchemeColors(
+                        getResources().getColor(android.R.color.holo_blue_dark),
                         getResources().getColor(android.R.color.holo_orange_dark),
                         getResources().getColor(android.R.color.holo_green_dark),
                         getResources().getColor(android.R.color.holo_red_dark));

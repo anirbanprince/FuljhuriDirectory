@@ -1,6 +1,5 @@
 package com.proseobd.fuljhuridirectory.adapters;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -16,22 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.proseobd.fuljhuridirectory.R;
-import com.proseobd.fuljhuridirectory.datamodels.PharmacyData;
+import com.proseobd.fuljhuridirectory.datamodels.JewellersData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHolder> implements Filterable {
+public class JewellersAdapter extends RecyclerView.Adapter<JewellersAdapter.ViewHolder> implements Filterable {
 
     LayoutInflater inflater;
-    List<PharmacyData> pharmacyDataList;
-    List<PharmacyData> backupPharmacyDataList;
+    List<JewellersData> jewelleryList;
+    List<JewellersData> backupJewelleryList;
 
-    public PharmacyAdapter(Context cTx, List<PharmacyData> pharmacyDataList) {
-        this.inflater = LayoutInflater.from(cTx);
-        this.pharmacyDataList = pharmacyDataList;
-        backupPharmacyDataList = new ArrayList<>(pharmacyDataList);
+    public JewellersAdapter(LayoutInflater inflater, List<JewellersData> jewelleryList) {
+        this.inflater = inflater;
+        this.jewelleryList = jewelleryList;
+        backupJewelleryList = new ArrayList<>(jewelleryList);
+
     }
+
+
+
 
     @NonNull
     @Override
@@ -45,20 +48,21 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.name.setText(pharmacyDataList.get(position).getName());
-        holder.owner.setText(pharmacyDataList.get(position).getOwner());
-        holder.address.setText(pharmacyDataList.get(position).getAddress());
-        holder.mobile.setText(pharmacyDataList.get(position).getMobile());
-        holder.email.setText(pharmacyDataList.get(position).getEmail());
+
+        holder.name.setText(jewelleryList.get(position).getName());
+        holder.owner.setText(jewelleryList.get(position).getOwner());
+        holder.address.setText(jewelleryList.get(position).getAddress());
+        holder.mobile.setText(jewelleryList.get(position).getMobile());
+        holder.email.setText(jewelleryList.get(position).getEmail());
 
         Glide.with(holder.profileImage.getContext())
-                .load(pharmacyDataList.get(position).getProfileImage())
+                .load(jewelleryList.get(position).getProfileImage())
                 .error(R.drawable.dummy_image)
                 .into(holder.profileImage);
 
         holder.imgCall.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + pharmacyDataList.get(position).getMobile()));
+            intent.setData(Uri.parse("tel:" + jewelleryList.get(position).getMobile()));
             holder.imgCall.getContext().startActivity(intent);
 
         });
@@ -67,18 +71,20 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
 
         holder.imgEmail.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:" + pharmacyDataList.get(position).getEmail()));
+            intent.setData(Uri.parse("mailto:" + jewelleryList.get(position).getEmail()));
             holder.imgEmail.getContext().startActivity(intent);
         });
+
+        holder.email.setVisibility(View.GONE);
 
     }
 
     @Override
     public int getItemCount() {
-        return pharmacyDataList.size();
+        return jewelleryList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, owner, address, mobile, email;
         ImageView profileImage, imgCall, imgEmail;
@@ -97,6 +103,8 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
 
         }
     }
+
+
     @Override
     public Filter getFilter() {
         return filter;
@@ -107,12 +115,12 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
         @Override
         protected FilterResults performFiltering(CharSequence keyword) {
 
-            List<PharmacyData> filteredData = new ArrayList<>();
+            List<JewellersData> filteredData = new ArrayList<>();
 
             if (keyword.toString().isEmpty()) {
-                filteredData.addAll(backupPharmacyDataList);
+                filteredData.addAll(backupJewelleryList);
             } else {
-                for (PharmacyData item : backupPharmacyDataList){
+                for (JewellersData item : backupJewelleryList){
                     if (item.getName().toLowerCase().contains(keyword.toString().toLowerCase())){
                         filteredData.add(item);
                     }
@@ -134,13 +142,12 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            pharmacyDataList.clear();
-            pharmacyDataList.addAll((List<PharmacyData>) results.values);
+            jewelleryList.clear();
+            jewelleryList.addAll((List<JewellersData>) results.values);
             notifyDataSetChanged();
 
         }
     };
-
 
 
 }

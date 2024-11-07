@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
             else if (cName.contains("জুয়েলার্স")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new JewellersFragment());
                 fragmentTransaction.commit();
             }
             else if (cName.contains("ইট , বালু , সিমেন্টের দোকান")) {
@@ -272,6 +272,11 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
+        hashMap.put("catName" , "জুয়েলার্স");
+        hashMap.put("img" , String.valueOf(R.drawable.jewelry));
+        arrayList.add(hashMap);
+
+        hashMap =new HashMap<>();
         hashMap.put("catName" , "ইট , বালু , সিমেন্টের দোকান");
         hashMap.put("img" , String.valueOf(R.drawable.cement_icon));
         arrayList.add(hashMap);
@@ -329,11 +334,6 @@ public class HomeFragment extends Fragment {
         hashMap =new HashMap<>();
         hashMap.put("catName" , "জুতার দোকান");
         hashMap.put("img" , String.valueOf(R.drawable.shoes));
-        arrayList.add(hashMap);
-
-        hashMap =new HashMap<>();
-        hashMap.put("catName" , "জুয়েলার্স");
-        hashMap.put("img" , String.valueOf(R.drawable.jewelry));
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();

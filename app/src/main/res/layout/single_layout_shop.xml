@@ -141,6 +141,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/alinur_bongobondhu"
                     android:text="ইমেইল"
+                    android:visibility="visible"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />

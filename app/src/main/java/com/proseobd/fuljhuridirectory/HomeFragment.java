@@ -106,6 +106,12 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, new PharmacyFragment());
                 fragmentTransaction.commit();
             }
+            else if (cName.contains("জুয়েলার্স")) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.commit();
+            }
             else if (cName.contains("ইট , বালু , সিমেন্টের দোকান")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -173,12 +179,6 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
             else if (cName.contains("জুতার দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
-            }
-            else if (cName.contains("জুয়েলার্স")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());

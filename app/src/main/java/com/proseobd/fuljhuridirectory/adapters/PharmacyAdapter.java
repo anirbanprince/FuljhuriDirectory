@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,28 +18,26 @@ import com.bumptech.glide.Glide;
 import com.proseobd.fuljhuridirectory.R;
 import com.proseobd.fuljhuridirectory.datamodels.PharmacyData;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHolder> {
+public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHolder> implements Filterable {
 
     LayoutInflater inflater;
     List<PharmacyData> pharmacyDataList;
+    List<PharmacyData> backupPharmacyDataList;
 
     public PharmacyAdapter(Context cTx, List<PharmacyData> pharmacyDataList) {
         this.inflater = LayoutInflater.from(cTx);
         this.pharmacyDataList = pharmacyDataList;
+        backupPharmacyDataList = new ArrayList<>(pharmacyDataList);
     }
-
-
-
-
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = inflater.inflate(R.layout.single_layout_shop, parent, false);
-
 
         return new ViewHolder(view);
     }
@@ -63,13 +63,13 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
 
         });
 
+        holder.imgEmail.setVisibility(View.GONE);
+
         holder.imgEmail.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:" + pharmacyDataList.get(position).getEmail()));
             holder.imgEmail.getContext().startActivity(intent);
         });
-
-
 
     }
 
@@ -97,6 +97,50 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
 
         }
     }
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence keyword) {
+
+            List<PharmacyData> filteredData = new ArrayList<>();
+
+            if (keyword.toString().isEmpty()) {
+                filteredData.addAll(backupPharmacyDataList);
+            } else {
+                for (PharmacyData item : backupPharmacyDataList){
+                    if (item.getName().toLowerCase().contains(keyword.toString().toLowerCase())){
+                        filteredData.add(item);
+                    }
+                    else if (item.getOwner().toLowerCase().contains(keyword.toString().toLowerCase())) {
+                        filteredData.add(item);
+                    }
+                    else if (item.getMobile().toLowerCase().contains(keyword.toString().toLowerCase())) {
+                        filteredData.add(item);
+                    }
+                }
+            }
+
+
+            FilterResults results = new FilterResults();
+            results.values = filteredData;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            pharmacyDataList.clear();
+            pharmacyDataList.addAll((List<PharmacyData>) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
+
 
 
 }

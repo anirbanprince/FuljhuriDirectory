@@ -51,6 +51,11 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
         holder.mobile.setText(upMemberDataList.get(position).getMobile());
         holder.wordNo.setText(upMemberDataList.get(position).getWordNo());
         holder.email.setText(upMemberDataList.get(position).getEmail());
+        if (upMemberDataList.get(position).getEmail().toString()=="N/A"){
+            holder.email.setVisibility(View.GONE);
+        }
+
+
         Glide.with(holder.profileImage.getContext())
                 .load(upMemberDataList.get(position).getProfileImage())
                 .into(holder.profileImage);
@@ -72,6 +77,10 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
             intent.setData(Uri.parse("mailto:" + upMemberDataList.get(position).getEmail()));
             holder.email.getContext().startActivity(intent);
         });
+
+
+
+
 
 
     }

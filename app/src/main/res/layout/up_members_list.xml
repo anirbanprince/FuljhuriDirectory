@@ -149,6 +149,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/alinur_bongobondhu"
                     android:text="ইমেইল"
+                    android:visibility="visible"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -159,6 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:src="@drawable/email"
+                    android:visibility="visible"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/actionBarItemBackground"

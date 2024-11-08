@@ -150,7 +150,7 @@ public class HomeFragment extends Fragment {
             else if (cName.contains("কামার এবং কুমারের দোকান")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new Kamar_kumarFragment());
                 fragmentTransaction.commit();
             }
             else if (cName.contains("কীটনাশক এবং পোল্ট্রি ফিড")) {
@@ -231,10 +231,10 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
                 fragmentTransaction.commit();
             }
-            else if (cName.contains("বিকাশ, নগদ, মোবাইল রিচার্জ")) {
+            else if (cName.contains("মুচি")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new MuciFragment());
                 fragmentTransaction.commit();
             }
 

@@ -123,12 +123,6 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
                 fragmentTransaction.commit();
             }
-            else if (cName.contains("ওয়ার্কসপ")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
-            }
             else if (cName.contains("কসমেটিকস")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -159,10 +153,10 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
                 fragmentTransaction.commit();
             }
-            else if (cName.contains("গ্যারেজ")) {
+            else if (cName.contains("গ্যারেজ এবং ওয়ার্কসপ")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new WorkshopFragment());
                 fragmentTransaction.commit();
             }
             else if (cName.contains("গার্মেন্টস এবং কাপড়ের দোকান")) {
@@ -285,10 +279,11 @@ public class HomeFragment extends Fragment {
         hashMap.put("img" , String.valueOf(R.drawable.wifi));
         arrayList.add(hashMap);
 
-        hashMap =new HashMap<>();
+/*      hashMap =new HashMap<>();
         hashMap.put("catName" , "ওয়ার্কসপ");
         hashMap.put("img" , String.valueOf(R.drawable.welding));
         arrayList.add(hashMap);
+ */
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "কসমেটিকস");
@@ -316,7 +311,7 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
         hashMap =new HashMap<>();
-        hashMap.put("catName" , "গ্যারেজ");
+        hashMap.put("catName" ,"গ্যারেজ এবং ওয়ার্কসপ");
         hashMap.put("img" , String.valueOf(R.drawable.garage));
         arrayList.add(hashMap);
 

@@ -45,24 +45,24 @@ dependencies {
     androidTestImplementation libs.espresso.core
 
     // For Load Image Form hosting
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation libs.glide
 
     // For parsing data form mysql database
-    implementation 'com.android.volley:volley:1.2.1'
+    implementation libs.volley
 
     // For Swipe Fresh
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation libs.swiperefreshlayout
 
     // lottie anim
-    implementation "com.airbnb.android:lottie:3.4.0"
+    implementation libs.lottie
 
     //t Rex offline game
-    implementation 'com.github.LionZXY.T-Rex-Android:trex-offline:1.0.0'
+    implementation libs.trex.offline
 
 
-    implementation platform('com.google.firebase:firebase-bom:33.5.1')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation("com.google.firebase:firebase-inappmessaging-display")
+    implementation platform(libs.firebase.bom)
+    implementation libs.google.firebase.analytics
+    implementation(libs.firebase.inappmessaging.display)
 
 
 

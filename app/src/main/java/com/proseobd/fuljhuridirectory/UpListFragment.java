@@ -88,23 +88,27 @@ public class UpListFragment extends Fragment {
 
 
 
-        if (NetworkUtils.isInternetAvailable(requireActivity())) {
-            loadData();
-        } else {
-            DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "আপনার মোবাইলে ইন্টারনেট নেই!");
-            swipeRefreshLayout.setRefreshing(false);
-        }
-
-
-
-
 
         if (NetworkUtils.isInternetAvailable(requireActivity())) {
             loadData();
         } else {
             DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "আপনার মোবাইলে ইন্টারনেট নেই!");
             swipeRefreshLayout.setRefreshing(false);
+
         }
+
+
+
+
+
+/*        if (NetworkUtils.isInternetAvailable(requireActivity())) {
+            loadData();
+        } else {
+            DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "আপনার মোবাইলে ইন্টারনেট নেই!");
+            swipeRefreshLayout.setRefreshing(false);
+        }
+
+ */
 
 
 
@@ -125,6 +129,8 @@ public class UpListFragment extends Fragment {
             }
 
         });
+
+
 
 
         return fragmentView;

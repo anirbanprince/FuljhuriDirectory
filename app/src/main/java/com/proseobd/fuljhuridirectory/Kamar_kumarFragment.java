@@ -52,8 +52,6 @@ public class Kamar_kumarFragment extends Fragment {
 
 
 
-
-
         View fragmentView = inflater.inflate(R.layout.fragment_kamar_kumar, container, false);
 
 
@@ -132,6 +130,9 @@ public class Kamar_kumarFragment extends Fragment {
 
         return fragmentView;
     }
+
+
+
     private void loadData(){
 
 

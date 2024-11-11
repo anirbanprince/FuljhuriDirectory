@@ -15,21 +15,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.proseobd.fuljhuridirectory.R;
-import com.proseobd.fuljhuridirectory.datamodels.KamarData;
+import com.proseobd.fuljhuridirectory.datamodels.CableData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> implements Filterable {
+public class CableAdapter extends RecyclerView.Adapter<CableAdapter.ViewHolder> implements Filterable {
 
     LayoutInflater inflater;
-    List<KamarData> kamarDataList;
-    List<KamarData> backupKamarDataList;
+    List<CableData> cableDataList;
+    List<CableData> backupCableDataList;;
 
-    public KamarAdapter(LayoutInflater inflater, List<KamarData> kamarDataList) {
+    public CableAdapter(LayoutInflater inflater, List<CableData> cableDataList) {
         this.inflater = inflater;
-        this.kamarDataList = kamarDataList;
-        backupKamarDataList = new ArrayList<>(kamarDataList);
+        this.cableDataList = cableDataList;
+        backupCableDataList = new ArrayList<>(cableDataList);
 
     }
 
@@ -42,27 +42,25 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
 
 
 
-        return new KamarAdapter.ViewHolder(view);
+        return new CableAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-
-        holder.name.setText(kamarDataList.get(position).getName());
-        holder.owner.setText(kamarDataList.get(position).getOwner());
-        holder.address.setText(kamarDataList.get(position).getAddress());
-        holder.mobile.setText(kamarDataList.get(position).getMobile());
-        holder.email.setText(kamarDataList.get(position).getEmail());
+        holder.name.setText(cableDataList.get(position).getName());
+        holder.owner.setText(cableDataList.get(position).getOwner());
+        holder.address.setText(cableDataList.get(position).getAddress());
+        holder.mobile.setText(cableDataList.get(position).getMobile());
+        holder.email.setText(cableDataList.get(position).getEmail());
 
         Glide.with(holder.profileImage.getContext())
-                .load(kamarDataList.get(position).getProfileImage())
+                .load(cableDataList.get(position).getProfileImage())
                 .error(R.drawable.dummy_image)
                 .into(holder.profileImage);
 
         holder.imgCall.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + kamarDataList.get(position).getMobile()));
+            intent.setData(Uri.parse("tel:" + cableDataList.get(position).getMobile()));
             holder.imgCall.getContext().startActivity(intent);
 
         });
@@ -71,7 +69,7 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
 
         holder.imgEmail.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:" + kamarDataList.get(position).getEmail()));
+            intent.setData(Uri.parse("mailto:" + cableDataList.get(position).getEmail()));
             holder.imgEmail.getContext().startActivity(intent);
         });
 
@@ -81,14 +79,15 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return kamarDataList.size();
+        return cableDataList.size();
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
 
         TextView name, owner, address, mobile, email;
         ImageView profileImage, imgCall, imgEmail;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,9 +104,6 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
         }
     }
 
-
-
-
     @Override
     public Filter getFilter() {
         return filter;
@@ -118,12 +114,12 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence keyword) {
 
-            List<KamarData> filteredData = new ArrayList<>();
+            List<CableData> filteredData = new ArrayList<>();
 
             if (keyword.toString().isEmpty()) {
-                filteredData.addAll(backupKamarDataList);
+                filteredData.addAll(backupCableDataList);
             } else {
-                for (KamarData item : backupKamarDataList){
+                for (CableData item : backupCableDataList){
                     if (item.getName().toLowerCase().contains(keyword.toString().toLowerCase())){
                         filteredData.add(item);
                     }
@@ -145,11 +141,14 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            kamarDataList.clear();
-            kamarDataList.addAll((List<KamarData>) results.values);
+            cableDataList.clear();
+            cableDataList.addAll((List<CableData>) results.values);
             notifyDataSetChanged();
 
         }
     };
+
+
+
 
 }

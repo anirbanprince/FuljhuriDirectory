@@ -86,6 +86,7 @@ public class HomeFragment extends Fragment {
 
         relLayout.setOnClickListener(v -> {
 
+
             assert cName != null;
             if (cName.contains("ইউপি সদস্য")){
 
@@ -115,40 +116,33 @@ public class HomeFragment extends Fragment {
                         .addToBackStack(null).commit();
             }
             else if (cName.contains("ইন্টারনেট এবং কেবল টিভি")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new CableFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new CableFragment())
+                        .addToBackStack(null).commit();
             }
-            else if (cName.contains("কসমেটিকস")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new CosmeticsFragment());
-                fragmentTransaction.commit();
+            else if (cName.contains("কসমেটিকস")) { requireActivity().getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.fragment_container, new CosmeticsFragment())
+                    .addToBackStack(null).commit();
             }
             else if (cName.contains("কাচা বাজার")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                    .addToBackStack(null).commit();
             }
             else if (cName.contains("কাঠমিস্ত্রী / ফার্নিচার")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                    .addToBackStack(null).commit();
             }
             else if (cName.contains("কামার এবং কুমারের দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new Kamar_kumarFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.fragment_container, new Kamar_kumarFragment())
+                    .addToBackStack(null).commit();
             }
             else if (cName.contains("কীটনাশক এবং পোল্ট্রি ফিড")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("গ্যারেজ এবং ওয়ার্কসপ")) {
                 requireActivity().getSupportFragmentManager()
@@ -156,76 +150,67 @@ public class HomeFragment extends Fragment {
                         .addToBackStack(null).commit();
             }
             else if (cName.contains("গার্মেন্টস এবং কাপড়ের দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("চায়ের দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("জুতার দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("টিনের দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("ধোপা")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("নৌ-পরিসেবা")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("পাইকারি দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("পানের দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("পেট্রল / ডিজেল")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("ফলের দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("বানিয়াতি দোকান")) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
-                fragmentTransaction.commit();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .addToBackStack(null).commit();
             }
             else if (cName.contains("মুচি")) {
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction().replace(R.id.fragment_container, new MuciFragment())
                         .addToBackStack(null).commit();
             }
+
+
 
         });
 
@@ -273,12 +258,6 @@ public class HomeFragment extends Fragment {
         hashMap.put("catName" , "ইন্টারনেট এবং কেবল টিভি");
         hashMap.put("img" , String.valueOf(R.drawable.wifi));
         arrayList.add(hashMap);
-
-/*      hashMap =new HashMap<>();
-        hashMap.put("catName" , "ওয়ার্কসপ");
-        hashMap.put("img" , String.valueOf(R.drawable.welding));
-        arrayList.add(hashMap);
- */
 
         hashMap =new HashMap<>();
         hashMap.put("catName" , "কসমেটিকস");

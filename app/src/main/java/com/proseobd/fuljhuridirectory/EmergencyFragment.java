@@ -17,7 +17,6 @@ public class EmergencyFragment extends Fragment {
 
     FrameLayout framLay;
     TabLayout tabLayout;
-    ViewPager viewPager;
 
 
     @Override
@@ -35,23 +34,25 @@ public class EmergencyFragment extends Fragment {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
+                Fragment tabFragment = null;
+
                 int tabPosition = tab.getPosition();
 
-                if (tabPosition==0) {
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new PoliceStationFragment()).commit();
-                }
-                else if (tabPosition==1) {
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new FireServiceFragment()).commit();
-                }
-                else if (tabPosition==2) {
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new HospitalFragment()).commit();
-                }
-                else if (tabPosition==3) {
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new AmbulanceFragment()).commit();
-                }
-                else if (tabPosition==4) {
-                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new OthersFragment()).commit();
-                }
+                if (tabPosition==0)  tabFragment = new PoliceStationFragment();
+
+                else if (tabPosition==1)  tabFragment = new FireServiceFragment();
+
+                else if (tabPosition==2)  tabFragment = new HospitalFragment();
+
+                else if (tabPosition==3)  tabFragment = new AmbulanceFragment();
+
+                else if (tabPosition==4)  tabFragment = new OthersFragment();
+
+                assert tabFragment != null;
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, tabFragment).commit();
+
+
 
             }
 

@@ -19,12 +19,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.proseobd.fuljhuridirectory.adapters.CosmeticsAdapter;
 import com.proseobd.fuljhuridirectory.adapters.KamarAdapter;
-import com.proseobd.fuljhuridirectory.adapters.WorkshopAdapter;
 import com.proseobd.fuljhuridirectory.controllers.DialogUtils;
 import com.proseobd.fuljhuridirectory.controllers.NetworkUtils;
+import com.proseobd.fuljhuridirectory.datamodels.CosmeticsData;
 import com.proseobd.fuljhuridirectory.datamodels.KamarData;
-import com.proseobd.fuljhuridirectory.datamodels.WorkshopData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WorkshopFragment extends Fragment {
+public class CosmeticsFragment extends Fragment {
+
 
     RecyclerView recycleView;
     ProgressBar progressBar;
@@ -41,17 +42,17 @@ public class WorkshopFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     TextView vdAdd;
 
-    WorkshopAdapter workshopAdapter;
+    CosmeticsAdapter cosmeticsAdapter;
 
-    List<WorkshopData> workshopDataList = new ArrayList<>();
+    List<CosmeticsData> cosmeticsDataList = new ArrayList<>();
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View fragmentView = inflater.inflate(R.layout.fragment_cosmetics, container, false);
 
-
-       View fragmentView = inflater.inflate(R.layout.fragment_workshop, container, false);
 
 
         vdAdd = fragmentView.findViewById(R.id.vdAdd);
@@ -75,7 +76,7 @@ public class WorkshopFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                workshopAdapter.getFilter().filter(newText);
+                cosmeticsAdapter.getFilter().filter(newText);
 
                 return false;
             }
@@ -126,13 +127,7 @@ public class WorkshopFragment extends Fragment {
 
         });
 
-
-
-
-
-
-
-        return fragmentView ;
+       return fragmentView;
     }
 
 
@@ -142,13 +137,13 @@ public class WorkshopFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
         progressBar.setVisibility(View.VISIBLE);
 
-        String url = "https://proseobd.com/apps/fuljhuridirectory/workshop/view.php";
+        String url = "https://proseobd.com/apps/fuljhuridirectory/Muci/view.php";
 
         JsonArrayRequest jsonArrayRequest;
         jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,
                 response -> {
                     progressBar.setVisibility(View.GONE);
-                    workshopDataList.clear();
+                    cosmeticsDataList.clear();
                     Log.d("ServerRes", response.toString());
 
 
@@ -157,22 +152,22 @@ public class WorkshopFragment extends Fragment {
                         try {
 
                             JSONObject jsonObject = response.getJSONObject(x);
-                            WorkshopData workshopData = new WorkshopData();
-                            workshopData.setName(jsonObject.getString("name"));
-                            workshopData.setOwner(jsonObject.getString("owner"));
-                            workshopData.setAddress(jsonObject.getString("address"));
-                            workshopData.setMobile(jsonObject.getString("mobile"));
-                            workshopData.setEmail(jsonObject.getString("email"));
-                            workshopData.setProfileImage(jsonObject.getString("profileImage"));
-                            workshopDataList.add(workshopData);
+                            CosmeticsData cosmeticsData = new CosmeticsData();
+                            cosmeticsData.setName(jsonObject.getString("name"));
+                            cosmeticsData.setOwner(jsonObject.getString("owner"));
+                            cosmeticsData.setAddress(jsonObject.getString("address"));
+                            cosmeticsData.setMobile(jsonObject.getString("mobile"));
+                            cosmeticsData.setEmail(jsonObject.getString("email"));
+                            cosmeticsData.setProfileImage(jsonObject.getString("profileImage"));
+                            cosmeticsDataList.add(cosmeticsData);
 
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
                     }
 
-                    workshopAdapter = new WorkshopAdapter(requireActivity().getLayoutInflater(),workshopDataList);
-                    recycleView.setAdapter(workshopAdapter);
+                    cosmeticsAdapter = new CosmeticsAdapter(requireActivity().getLayoutInflater(),cosmeticsDataList);
+                    recycleView.setAdapter(cosmeticsAdapter);
 
                 }, error -> DialogUtils.showAlertDialog(getActivity(), "সতর্ক বার্তা", "সার্ভার এরর!"));
 
@@ -181,5 +176,9 @@ public class WorkshopFragment extends Fragment {
 
 
     }
+
+
+
+
 
 }

@@ -3,6 +3,7 @@ package com.proseobd.fuljhuridirectory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ public class EmergencyFragment extends Fragment {
 
     FrameLayout framLay;
     TabLayout tabLayout;
-
+    ViewPager viewPager;
 
 
     @Override
@@ -29,6 +30,7 @@ public class EmergencyFragment extends Fragment {
 
 
         requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framLay, new PoliceStationFragment()).commit();
+
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -63,6 +65,8 @@ public class EmergencyFragment extends Fragment {
 
             }
         });
+
+
 
 
 

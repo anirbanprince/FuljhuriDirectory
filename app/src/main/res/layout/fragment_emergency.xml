@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EmergencyFragment">
 
 
@@ -25,8 +26,10 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/sangri"
         android:layout_below="@id/titleText"
-        android:background="@color/sangri"
+        android:background="#FF9800"
 
         >
 
@@ -71,6 +74,9 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+
+
+
     <FrameLayout
         android:id="@+id/framLay"
         android:layout_width="match_parent"
@@ -78,6 +84,7 @@
         android:layout_marginTop="2dp"
         android:layout_below="@id/tabLayout"
         />
+
 
 
 

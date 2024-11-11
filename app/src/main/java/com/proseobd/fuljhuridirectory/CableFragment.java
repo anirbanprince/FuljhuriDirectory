@@ -136,7 +136,7 @@ public class CableFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(requireActivity());
         progressBar.setVisibility(View.VISIBLE);
 
-        String url = "https://proseobd.com/apps/fuljhuridirectory/Muci/view.php";
+        String url = "https://proseobd.com/apps/fuljhuridirectory/Cable%20Network/view.php";
 
         JsonArrayRequest jsonArrayRequest;
         jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null,

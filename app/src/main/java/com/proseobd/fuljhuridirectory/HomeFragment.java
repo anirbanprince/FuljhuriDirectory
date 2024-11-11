@@ -120,13 +120,13 @@ public class HomeFragment extends Fragment {
             else if (cName.contains("ইন্টারনেট এবং কেবল টিভি")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new CableFragment());
                 fragmentTransaction.commit();
             }
             else if (cName.contains("কসমেটিকস")) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new BricksFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new CosmeticsFragment());
                 fragmentTransaction.commit();
             }
             else if (cName.contains("কাচা বাজার")) {

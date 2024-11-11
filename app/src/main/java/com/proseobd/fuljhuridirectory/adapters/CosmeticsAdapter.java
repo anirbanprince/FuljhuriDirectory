@@ -15,54 +15,54 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.proseobd.fuljhuridirectory.R;
+import com.proseobd.fuljhuridirectory.datamodels.CosmeticsData;
 import com.proseobd.fuljhuridirectory.datamodels.KamarData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> implements Filterable {
+public class CosmeticsAdapter extends RecyclerView.Adapter< CosmeticsAdapter.ViewHolder> implements Filterable {
 
     LayoutInflater inflater;
-    List<KamarData> kamarDataList;
-    List<KamarData> backupKamarDataList;
+    List<CosmeticsData> cosmeticsDataList;
+    List<CosmeticsData> backupcosmeticsDataList;
 
-    public KamarAdapter(LayoutInflater inflater, List<KamarData> kamarDataList) {
+    public CosmeticsAdapter(LayoutInflater inflater, List<CosmeticsData> cosmeticsDataList) {
         this.inflater = inflater;
-        this.kamarDataList = kamarDataList;
-        backupKamarDataList = new ArrayList<>(kamarDataList);
+        this.cosmeticsDataList = cosmeticsDataList;
+        backupcosmeticsDataList = new ArrayList<>(cosmeticsDataList);
 
     }
-
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
+
         View view = inflater.inflate(R.layout.single_layout_shop,parent,false);
 
 
 
-        return new KamarAdapter.ViewHolder(view);
+        return new CosmeticsAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-
-        holder.name.setText(kamarDataList.get(position).getName());
-        holder.owner.setText(kamarDataList.get(position).getOwner());
-        holder.address.setText(kamarDataList.get(position).getAddress());
-        holder.mobile.setText(kamarDataList.get(position).getMobile());
-        holder.email.setText(kamarDataList.get(position).getEmail());
+        holder.name.setText(cosmeticsDataList.get(position).getName());
+        holder.owner.setText(cosmeticsDataList.get(position).getOwner());
+        holder.address.setText(cosmeticsDataList.get(position).getAddress());
+        holder.mobile.setText(cosmeticsDataList.get(position).getMobile());
+        holder.email.setText(cosmeticsDataList.get(position).getEmail());
 
         Glide.with(holder.profileImage.getContext())
-                .load(kamarDataList.get(position).getProfileImage())
+                .load(cosmeticsDataList.get(position).getProfileImage())
                 .error(R.drawable.dummy_image)
                 .into(holder.profileImage);
 
         holder.imgCall.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + kamarDataList.get(position).getMobile()));
+            intent.setData(Uri.parse("tel:" + cosmeticsDataList.get(position).getMobile()));
             holder.imgCall.getContext().startActivity(intent);
 
         });
@@ -71,28 +71,26 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
 
         holder.imgEmail.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("mailto:" + kamarDataList.get(position).getEmail()));
+            intent.setData(Uri.parse("mailto:" + cosmeticsDataList.get(position).getEmail()));
             holder.imgEmail.getContext().startActivity(intent);
         });
 
         holder.email.setVisibility(View.GONE);
 
+
     }
 
     @Override
-    public int getItemCount() {
-        return kamarDataList.size();
-    }
+    public int getItemCount() {return cosmeticsDataList.size();}
 
-    public  class ViewHolder extends RecyclerView.ViewHolder{
-
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, owner, address, mobile, email;
         ImageView profileImage, imgCall, imgEmail;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
 
             name = itemView.findViewById(R.id.name);
             owner = itemView.findViewById(R.id.owner);
@@ -104,10 +102,6 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
             imgEmail = itemView.findViewById(R.id.imgEmail);
         }
     }
-
-
-
-
     @Override
     public Filter getFilter() {
         return filter;
@@ -118,12 +112,12 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence keyword) {
 
-            List<KamarData> filteredData = new ArrayList<>();
+            List<CosmeticsData> filteredData = new ArrayList<>();
 
             if (keyword.toString().isEmpty()) {
-                filteredData.addAll(backupKamarDataList);
+                filteredData.addAll(backupcosmeticsDataList);
             } else {
-                for (KamarData item : backupKamarDataList){
+                for (CosmeticsData item : backupcosmeticsDataList){
                     if (item.getName().toLowerCase().contains(keyword.toString().toLowerCase())){
                         filteredData.add(item);
                     }
@@ -145,11 +139,13 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            kamarDataList.clear();
-            kamarDataList.addAll((List<KamarData>) results.values);
+            cosmeticsDataList.clear();
+            cosmeticsDataList.addAll((List<CosmeticsData>) results.values);
             notifyDataSetChanged();
 
         }
     };
+
+
 
 }

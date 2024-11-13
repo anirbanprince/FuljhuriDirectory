@@ -198,7 +198,7 @@ public class HomeFragment extends Fragment {
             }
             else if (cName.contains("বানিয়াতি দোকান")) {
                 requireActivity().getSupportFragmentManager()
-                        .beginTransaction().replace(R.id.fragment_container, new BricksFragment())
+                        .beginTransaction().replace(R.id.fragment_container, new BaniyatiFragment())
                         .addToBackStack(null).commit();
             }
             else if (cName.contains("মুচি")) {

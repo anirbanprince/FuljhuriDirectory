@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,8 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
     LayoutInflater inflater;
     List<PharmacyData> pharmacyDataList;
     List<PharmacyData> backupPharmacyDataList;
+
+    private ArrayList<Integer> mSectionPositions;
 
     public PharmacyAdapter(Context cTx, List<PharmacyData> pharmacyDataList) {
         this.inflater = LayoutInflater.from(cTx);
@@ -77,6 +80,8 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
     public int getItemCount() {
         return pharmacyDataList.size();
     }
+
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -140,6 +145,14 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.ViewHo
 
         }
     };
+
+
+
+
+
+
+
+
 
 
 

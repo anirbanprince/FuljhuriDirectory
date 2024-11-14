@@ -19,7 +19,9 @@ volley = "1.2.1"
 
 [libraries]
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-inappmessaging = { module = "com.google.firebase:firebase-inappmessaging" }
 firebase-inappmessaging-display = { module = "com.google.firebase:firebase-inappmessaging-display" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

@@ -62,7 +62,9 @@ dependencies {
 
     implementation platform(libs.firebase.bom)
     implementation libs.google.firebase.analytics
+    implementation (libs.firebase.inappmessaging)
     implementation(libs.firebase.inappmessaging.display)
+    implementation (libs.firebase.messaging)
 
 
 

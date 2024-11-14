@@ -35,6 +35,7 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
+        askNotificationPermission();
 
         gridView = fragmentView.findViewById(R.id.gridView);
 
@@ -42,8 +43,6 @@ public class HomeFragment extends Fragment {
 
         MyAdapter myAdapter = new MyAdapter();
         gridView.setAdapter(myAdapter);
-
-        askNotificationPermission();
 
 
 
@@ -225,11 +224,7 @@ public class HomeFragment extends Fragment {
         return myView;
     }
 
-
-
 }
-
-
 
 //======================   ArrayList ========================//
     public void createtable () {

@@ -39,6 +39,7 @@
                     android:id="@+id/profileImage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    android:contentDescription="@string/profileimage"
                     android:src="@drawable/dummy_image"
                     android:scaleType="centerCrop"/>
 
@@ -60,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alinur_bongobondhu"
-            android:text="প্রতিষ্ঠানের নাম"
+            android:text="@string/shop_name"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             />
@@ -71,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alinur_bongobondhu"
-            android:text="মালিকের নাম"
+            android:text="@string/owner_name"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             />
@@ -88,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="প্রতিষ্ঠানের অবস্থান"
+                    android:text="@string/shop_adress"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -109,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="মোবাইল"
+                    android:text="@string/mobile"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -117,9 +118,10 @@
                 <ImageView
                     android:id="@+id/imgCall"
                     android:layout_marginStart="20dp"
-                    android:layout_width="80dp"
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/callimg"
                     android:src="@drawable/call"
                     android:clickable="true"
                     android:focusable="true"
@@ -140,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="ইমেইল"
+                    android:text="@string/email"
                     android:visibility="visible"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
@@ -149,8 +151,9 @@
                 <ImageView
                     android:id="@+id/imgEmail"
                     android:layout_marginStart="20dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:contentDescription="@string/emailimg"
                     android:src="@drawable/email"
                     android:visibility="visible"
                     android:clickable="true"

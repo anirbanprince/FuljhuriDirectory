@@ -11,7 +11,7 @@
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="জুয়েলার্স সমূহের তালিকা"
+        android:text="@string/jwelars_numbers"
         android:fontFamily="@font/alinur_bongobondhu"
         android:textSize="22sp"
         android:textColor="@color/sangri"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:visibility="gone"
-        android:text="Hello"
+        android:text="@string/hello"
         android:textSize="20sp"
         android:layout_below="@id/titleText"
         />

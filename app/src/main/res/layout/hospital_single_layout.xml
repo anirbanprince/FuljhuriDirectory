@@ -18,7 +18,7 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="* নাম"
+            android:text="@string/star_name"
             android:textSize="25sp"
             android:textColor="@color/white"
             />
@@ -28,7 +28,7 @@
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="* ঠিকানা"
+            android:text="@string/star_adress"
             android:textSize="22sp"
             android:textColor="@color/white"
             />
@@ -45,7 +45,7 @@
                     android:id="@+id/nameOH"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ডা: এ.এইচ,এম জহিরুল ইসলাম সিভিল সার্জন, বরগুনা।"
+                    android:text="@string/dr_hm_jahirul"
                     android:textSize="20sp"
                     android:textColor="@color/white"
                     android:gravity="center"
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="* প্রতিষ্ঠান প্রধানের যোগাযোগ :-"
+                android:text="@string/star_organaisation_head"
                 android:textSize="18sp"
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/white"
@@ -73,7 +73,7 @@
                 android:id="@+id/mobileOH"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="01717000000"
+                android:text="@string/demo_mobile_number"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:layout_gravity="center_vertical"
@@ -84,6 +84,7 @@
                 android:id="@+id/imgCall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/callimg"
                 android:src="@drawable/call" />
 
 

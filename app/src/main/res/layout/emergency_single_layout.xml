@@ -37,6 +37,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:src="@drawable/dummy_image"
+                    android:contentDescription="@string/profileimage"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -57,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="নাম"
+                    android:text="@string/name"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -68,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="পদবি"
+                    android:text="@string/designation"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -85,7 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:fontFamily="@font/alinur_bongobondhu"
-                        android:text="মোবাইল"
+                        android:text="@string/mobile"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp"
                         />
@@ -95,6 +96,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
+                        android:contentDescription="@string/callimg"
                         android:src="@drawable/call"
                         android:clickable="true"
                         android:focusable="true"
@@ -115,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:fontFamily="@font/alinur_bongobondhu"
-                        android:text="ইমেইল"
+                        android:text="@string/email"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         />
@@ -125,6 +127,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
+                        android:contentDescription="@string/emailimg"
                         android:src="@drawable/email"
                         android:clickable="true"
                         android:focusable="true"

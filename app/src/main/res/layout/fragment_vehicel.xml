@@ -11,7 +11,7 @@
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="যানবাহন"
+        android:text="@string/vehicel"
         android:textColor="@color/sangri"
         android:gravity="center"
         android:textSize="25sp"
@@ -36,7 +36,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="মোটরসাইকেল"
+            android:text="@string/motorcycle"
             android:icon="@drawable/police_station"
             />
 
@@ -44,7 +44,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ইজি বাইক"
+            android:text="@string/easy_byke"
             android:icon="@drawable/fire_station"
             />
 
@@ -52,7 +52,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="পিক-আপ/ট্রাক"
+            android:text="@string/pik_up"
             android:icon="@drawable/hospital"
             />
 
@@ -60,7 +60,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ভ্যান"
+            android:text="@string/van"
             android:icon="@drawable/ambulace"
             />
 

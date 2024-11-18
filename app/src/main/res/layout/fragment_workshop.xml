@@ -10,7 +10,7 @@
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="গ্যারেজ এবং ওয়ার্কসপের তালিকা"
+        android:text="@string/garage_workshop"
         android:fontFamily="@font/alinur_bongobondhu"
         android:textSize="22sp"
         android:textColor="@color/sangri"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:visibility="gone"
-        android:text="Hello"
+        android:text="@string/hello"
         android:textSize="20sp"
         android:layout_below="@id/titleText"
         />

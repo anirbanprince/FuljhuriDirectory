@@ -11,7 +11,7 @@
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="জরুরী সেবা সমূহ"
+        android:text="@string/emerjency_services"
         android:textColor="@color/sangri"
         android:gravity="center"
         android:textSize="25sp"
@@ -36,7 +36,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="থানা"
+            android:text="@string/police_station"
             android:icon="@drawable/police_station"
             />
 
@@ -44,7 +44,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ফায়ার সার্ভিস"
+            android:text="@string/fire_service"
             android:icon="@drawable/fire_station"
             />
 
@@ -52,7 +52,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="হাসপাতাল"
+            android:text="@string/hospitals"
             android:icon="@drawable/hospital"
             />
 
@@ -60,7 +60,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="এ্যাম্বুলেন্স"
+            android:text="@string/ambulace"
             android:icon="@drawable/ambulace"
             />
 
@@ -68,7 +68,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="অন্যান্য"
+            android:text="@string/others"
             android:icon="@drawable/more"
             />
 

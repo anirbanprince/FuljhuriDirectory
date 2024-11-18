@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="আপনার পছন্দের ক্যাটাগরি নির্বাচন করুন"
+        android:text="@string/choose_your_category"
         android:fontFamily="@font/alinur_bongobondhu"
         android:textSize="22sp"
         android:layout_centerInParent="true"

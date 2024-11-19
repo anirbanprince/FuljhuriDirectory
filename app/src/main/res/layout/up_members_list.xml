@@ -39,7 +39,11 @@
                     android:id="@+id/profileImage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    android:contentDescription="@string/profileimage"
                     android:src="@drawable/dummy_image"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/actionBarItemBackground"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -60,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alinur_bongobondhu"
-            android:text="নাম"
+            android:text="@string/name"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             />
@@ -71,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alinur_bongobondhu"
-            android:text="পদবি"
+            android:text="@string/designation"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             />
@@ -86,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="ওয়ার্ড নং"
+                    android:text="@string/word_no"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -97,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="ওয়ার্ড নং"
+                    android:text="@string/word_no"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -118,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="মোবাইল"
+                    android:text="@string/mobile"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
                     />
@@ -126,8 +130,9 @@
                 <ImageView
                     android:id="@+id/imgCall"
                     android:layout_marginStart="20dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:contentDescription="@string/callimg"
                     android:src="@drawable/call"
                     android:clickable="true"
                     android:focusable="true"
@@ -148,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:fontFamily="@font/alinur_bongobondhu"
-                    android:text="ইমেইল"
+                    android:text="@string/email"
                     android:visibility="visible"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
@@ -159,6 +164,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:contentDescription="@string/emailimg"
                     android:src="@drawable/email"
                     android:visibility="visible"
                     android:clickable="true"
@@ -173,6 +179,16 @@
     </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imgFrame"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        android:adjustViewBounds="true"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

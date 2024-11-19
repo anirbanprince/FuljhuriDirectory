@@ -71,4 +71,5 @@ public class UpMemberData {
     public void setWordNo(String wordNo) {
         this.wordNo = wordNo;
     }
+
 }

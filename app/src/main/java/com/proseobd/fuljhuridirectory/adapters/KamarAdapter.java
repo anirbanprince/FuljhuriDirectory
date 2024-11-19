@@ -60,6 +60,18 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
                 .error(R.drawable.dummy_image)
                 .into(holder.profileImage);
 
+        holder.profileImage.setOnClickListener(v -> {
+            holder.profileImage.setClickable(true);
+            holder.imgFrame.setVisibility(View.VISIBLE);
+            Glide
+                    .with(holder.profileImage.getContext())
+                    .load(kamarDataList.get(position).getProfileImage())
+                    .override(1000, 350)
+                    .into(holder.imgFrame);
+        });
+
+        holder.setIsRecyclable(false);
+
         holder.imgCall.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:" + kamarDataList.get(position).getMobile()));
@@ -88,7 +100,7 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
 
 
         TextView name, owner, address, mobile, email;
-        ImageView profileImage, imgCall, imgEmail;
+        ImageView profileImage, imgFrame, imgCall, imgEmail;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,6 +112,7 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
             mobile = itemView.findViewById(R.id.mobile);
             email = itemView.findViewById(R.id.email);
             profileImage = itemView.findViewById(R.id.profileImage);
+            imgFrame = itemView.findViewById(R.id.imgFrame);
             imgCall = itemView.findViewById(R.id.imgCall);
             imgEmail = itemView.findViewById(R.id.imgEmail);
         }

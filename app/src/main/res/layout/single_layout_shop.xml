@@ -41,6 +41,9 @@
                     android:layout_height="150dp"
                     android:contentDescription="@string/profileimage"
                     android:src="@drawable/dummy_image"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:foreground="?attr/actionBarItemBackground"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -168,6 +171,16 @@
     </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imgFrame"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

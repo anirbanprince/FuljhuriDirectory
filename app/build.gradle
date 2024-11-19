@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.firebase.inappmessaging.display)
     implementation (libs.firebase.messaging)
 
+    //Photo View Zoom
+
 
 
 

@@ -56,9 +56,20 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
         }
 
 
-        Glide.with(holder.profileImage.getContext())
+        Glide
+                .with(holder.profileImage.getContext())
                 .load(upMemberDataList.get(position).getProfileImage())
                 .into(holder.profileImage);
+
+        holder.profileImage.setOnClickListener(v -> {
+            holder.profileImage.setClickable(true);
+            holder.imgFrame.setVisibility(View.VISIBLE);
+            Glide
+                    .with(holder.profileImage.getContext())
+                    .load(upMemberDataList.get(position).getProfileImage())
+                    .override(1000, 350)
+                    .into(holder.imgFrame);
+        });
 
         holder.setIsRecyclable(false);
 
@@ -88,7 +99,7 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
     public static class vHolder extends RecyclerView.ViewHolder {
 
         TextView name, designation, mobile, wordNo, email;
-        ImageView profileImage, imgCall, imgEmail;
+        ImageView profileImage, imgCall, imgEmail, imgFrame;
 
         public vHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +110,7 @@ public class UpMemberAdapter extends RecyclerView.Adapter<UpMemberAdapter.vHolde
             wordNo = itemView.findViewById(R.id.wordNo);
             email = itemView.findViewById(R.id.email);
             profileImage = itemView.findViewById(R.id.profileImage);
+            imgFrame = itemView.findViewById(R.id.imgFrame);
 
             imgCall = itemView.findViewById(R.id.imgCall);
             imgEmail = itemView.findViewById(R.id.imgEmail);

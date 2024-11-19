@@ -10,10 +10,12 @@ lottie = "6.5.2"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
+photoview = "latest.release.here"
 playServicesAds = "21.5.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseAnalytics = "22.1.2"
 swiperefreshlayout = "1.2.0-alpha01"
+touchimageview = "1.4.1"
 trexOffline = "1.0.0"
 volley = "1.2.1"
 
@@ -32,9 +34,11 @@ lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+photoview = { module = "com.github.chrisbanes:PhotoView", version.ref = "photoview" }
 play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
 swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
+touchimageview = { module = "com.github.MikeOrtiz:TouchImageView", version.ref = "touchimageview" }
 trex-offline = { module = "com.github.LionZXY.T-Rex-Android:trex-offline", version.ref = "trexOffline" }
 volley = { module = "com.android.volley:volley", version.ref = "volley" }
 

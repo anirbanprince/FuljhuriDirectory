@@ -67,6 +67,7 @@
     <string name="shop_name">প্রতিষ্ঠানের নাম</string>
     <string name="owner_name">মালিকের নাম</string>
     <string name="shop_adress">প্রতিষ্ঠানের অবস্থান</string>
+    <string name="word_no">ওয়ার্ড নং</string>
 
 
 </resources>

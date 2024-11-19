@@ -42,7 +42,7 @@ public class CableAdapter extends RecyclerView.Adapter<CableAdapter.ViewHolder> 
 
 
 
-        return new CableAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class CableAdapter extends RecyclerView.Adapter<CableAdapter.ViewHolder> 
         return cableDataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
 
         TextView name, owner, address, mobile, email;

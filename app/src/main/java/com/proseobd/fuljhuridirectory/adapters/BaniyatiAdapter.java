@@ -45,7 +45,7 @@ public class BaniyatiAdapter extends RecyclerView.Adapter<BaniyatiAdapter.ViewHo
 
 
 
-        return new BaniyatiAdapter.ViewHolder(view);
+        return new ViewHolder(view);
 
     }
 
@@ -100,7 +100,7 @@ public class BaniyatiAdapter extends RecyclerView.Adapter<BaniyatiAdapter.ViewHo
         return baniyatiDataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, owner, address, mobile, email;
         ImageView profileImage, imgFrame, imgCall, imgEmail;

@@ -20,11 +20,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.proseobd.fuljhuridirectory.adapters.BaniyatiAdapter;
-import com.proseobd.fuljhuridirectory.adapters.MuciAdapter;
 import com.proseobd.fuljhuridirectory.controllers.DialogUtils;
 import com.proseobd.fuljhuridirectory.controllers.NetworkUtils;
 import com.proseobd.fuljhuridirectory.datamodels.BaniyatiData;
-import com.proseobd.fuljhuridirectory.datamodels.MuciData;
 
 import org.json.JSONException;
 import org.json.JSONObject;

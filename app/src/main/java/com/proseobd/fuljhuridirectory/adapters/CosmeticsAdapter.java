@@ -43,7 +43,7 @@ public class CosmeticsAdapter extends RecyclerView.Adapter< CosmeticsAdapter.Vie
 
 
 
-        return new CosmeticsAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class CosmeticsAdapter extends RecyclerView.Adapter< CosmeticsAdapter.Vie
     @Override
     public int getItemCount() {return cosmeticsDataList.size();}
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name, owner, address, mobile, email;
         ImageView profileImage, imgFrame, imgCall, imgEmail;

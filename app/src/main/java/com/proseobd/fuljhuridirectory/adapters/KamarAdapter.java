@@ -42,7 +42,7 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
 
 
 
-        return new KamarAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class KamarAdapter extends RecyclerView.Adapter<KamarAdapter.ViewHolder> 
         return kamarDataList.size();
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
 
         TextView name, owner, address, mobile, email;

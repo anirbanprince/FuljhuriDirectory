@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -35,7 +37,6 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
-        askNotificationPermission();
 
         gridView = fragmentView.findViewById(R.id.gridView);
 
@@ -448,50 +449,6 @@ public class HomeFragment extends Fragment {
         arrayList.add(hashMap);
 
     }
-
-
-    ///////////// Notification Start ////////////
-
-    // Declare the launcher at the top of your Activity/Fragment:
-
-    private final ActivityResultLauncher<String> requestPermissionLauncher =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if (isGranted) {
-                    // FCM SDK (and your app) can post notifications.
-                } else {
-                    // TODO: Inform user that that your app will not show notifications.
-                }
-            });
-
-
-    private void askNotificationPermission() {
-        // This is only necessary for API level >= 33 (TIRAMISU)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-
-            if (ContextCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.POST_NOTIFICATIONS) ==
-                    PackageManager.PERMISSION_GRANTED) {
-
-            }
-            else if (shouldShowRequestPermissionRationale(android.Manifest.permission.POST_NOTIFICATIONS)) {
-
-                new AlertDialog.Builder(requireActivity())
-                        .setTitle("Notification Permission")
-                        .setMessage("This app will not show notifications without permission")
-                        .setPositiveButton("OK", (dialog, which) -> requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS))
-                        .setNegativeButton("Cancel", null)
-                        .show();
-
-            }
-            else {
-                // Directly ask for the permission
-                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS);
-            }
-        }
-    }
-
-    ///////////// Notification END ////////////
-
-
 
 
 }

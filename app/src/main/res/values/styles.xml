@@ -1,0 +1,7 @@
+<resources>
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- ... existing theme attributes ... -->
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources> 

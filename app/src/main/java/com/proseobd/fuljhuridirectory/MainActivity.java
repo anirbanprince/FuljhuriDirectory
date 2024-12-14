@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,13 +27,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.proseobd.fuljhuridirectory.utils.ThemeHelper;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (ThemeHelper.isDarkMode(this)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -45,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        updateThemeMenuItem();
 
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav,
@@ -58,6 +68,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void updateThemeMenuItem() {
+        MenuItem themeMenuItem = navigationView.getMenu().findItem(R.id.nav_dark_mode);
+        boolean isDarkMode = ThemeHelper.isDarkMode(this);
+        
+        if (isDarkMode) {
+            themeMenuItem.setIcon(R.drawable.ic_light_mode);
+            themeMenuItem.setTitle("লাইট মোড");
+        } else {
+            themeMenuItem.setIcon(R.drawable.ic_dark_mode);
+            themeMenuItem.setTitle("ডার্ক মোড");
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -84,6 +106,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_logout:
                 Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.nav_dark_mode:
+                boolean isDarkMode = ThemeHelper.isDarkMode(this);
+                ThemeHelper.setDarkMode(this, !isDarkMode);
+                updateThemeMenuItem();
+                recreate();
+                return true;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

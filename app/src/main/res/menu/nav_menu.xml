@@ -19,11 +19,15 @@
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/nav_share"
-            android:title="শেয়ার"/>
+            android:title="শেয়ার"/>
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/nav_about"
             android:title="আমাদের সম্পর্কে"/>
+        <item
+            android:id="@+id/nav_dark_mode"
+            android:icon="@drawable/ic_dark_mode"
+            android:title="ডার্ক মোড"/>
     </group>
 
     <item

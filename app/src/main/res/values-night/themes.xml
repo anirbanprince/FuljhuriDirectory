@@ -1,8 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ফুলঝুড়িডিরেক্টরিFuljhuriDirectory" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.FuljhuriDirectory" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorPrimaryDark">@color/dark_primary_dark</item>
+        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="android:textColor">@color/dark_text</item>
         <item name="fontFamily">@font/alinur_bongobondhu</item>
     </style>
+
+    <style name="Theme.FuljhuriDirectory" parent="Base.Theme.FuljhuriDirectory" />
 </resources>

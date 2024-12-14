@@ -9,4 +9,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="lavender">#8692f7</color>
     <color name="sangri">#418ED5</color>
+    <color name="dark_primary">#1F1F1F</color>
+    <color name="dark_primary_dark">#000000</color>
+    <color name="dark_background">#121212</color>
+    <color name="dark_text">#FFFFFF</color>
 </resources>

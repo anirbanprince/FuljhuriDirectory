@@ -1,13 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ফুলঝুড়িডিরেক্টরিFuljhuriDirectory" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/sangri</item> -->
+    <style name="Base.Theme.FuljhuriDirectory" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/sangri</item>
+        <item name="colorPrimaryDark">@color/sangri</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/black</item>
         <item name="fontFamily">@font/alinur_bongobondhu</item>
-
     </style>
 
-    <style name="Theme.ফুলঝুড়িডিরেক্টরিFuljhuriDirectory" parent="Base.Theme.ফুলঝুড়িডিরেক্টরিFuljhuriDirectory" />
+    <style name="Theme.FuljhuriDirectory" parent="Base.Theme.FuljhuriDirectory" />
+    
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title." parent="@android:style/TextAppearance">
         <item name="fontFamily">@font/alinur_bongobondhu</item>
     </style>

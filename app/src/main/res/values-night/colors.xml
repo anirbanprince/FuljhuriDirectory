@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary colors -->
-    <color name="primary">#A1C9FF</color>
-    <color name="on_primary">#00325B</color>
-    <color name="primary_container">#004881</color>
-    <color name="on_primary_container">#D4E3FF</color>
+    <!-- Legacy colors (keep for compatibility) -->
+    <color name="sangri">#90CAF9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
-    <!-- Secondary colors -->
-    <color name="secondary">#BBC7DB</color>
-    <color name="on_secondary">#253141</color>
-    <color name="secondary_container">#3B4858</color>
-    <color name="on_secondary_container">#D7E3F8</color>
+    <!-- Primary colors - Glowing Blue -->
+    <color name="primary">@color/sangri</color>
+    <color name="on_primary">#003B6F</color>
+    <color name="primary_container">#0277BD</color>
+    <color name="on_primary_container">#E1F5FE</color>
 
-    <!-- Tertiary colors -->
-    <color name="tertiary">#D6BEE4</color>
-    <color name="on_tertiary">#3B2948</color>
-    <color name="tertiary_container">#523F5F</color>
-    <color name="on_tertiary_container">#F3DAFF</color>
+    <!-- Secondary colors - Cool Gray -->
+    <color name="secondary">#B0BEC5</color>
+    <color name="on_secondary">#263238</color>
+    <color name="secondary_container">#455A64</color>
+    <color name="on_secondary_container">#ECEFF1</color>
 
-    <!-- Surface colors -->
-    <color name="surface">#1A1C1E</color>
-    <color name="on_surface">#E3E2E6</color>
-    <color name="surface_variant">#43474E</color>
-    <color name="on_surface_variant">#C3C6CF</color>
+    <!-- Tertiary colors - Vibrant Purple -->
+    <color name="tertiary">#CE93D8</color>
+    <color name="on_tertiary">#3E236E</color>
+    <color name="tertiary_container">#6A1B9A</color>
+    <color name="on_tertiary_container">#F3E5F5</color>
+
+    <!-- Surface colors - Deep Gray -->
+    <color name="surface">#121212</color>
+    <color name="on_surface">#E3E3E3</color>
+    <color name="surface_variant">#2D2D2D</color>
+    <color name="on_surface_variant">#DADCE0</color>
 
     <!-- Background colors -->
-    <color name="background">#1A1C1E</color>
-    <color name="on_background">#E3E2E6</color>
+    <color name="background">#1F1F1F</color>
+    <color name="on_background">#E3E3E3</color>
 
-    <!-- Error colors -->
-    <color name="error">#FFB4AB</color>
+    <!-- Error colors - Soft Red -->
+    <color name="error">#EF9A9A</color>
     <color name="on_error">#690005</color>
-    <color name="error_container">#93000A</color>
-    <color name="on_error_container">#FFDAD6</color>
+    <color name="error_container">#B71C1C</color>
+    <color name="on_error_container">#FFEBEE</color>
 
     <!-- Outline colors -->
-    <color name="outline">#8D9199</color>
-    <color name="outline_variant">#43474E</color>
+    <color name="outline">#938F99</color>
+    <color name="outline_variant">#444446</color>
 
-    <!-- Legacy colors (keep for backward compatibility) -->
+    <!-- Legacy mappings -->
     <color name="dark_primary">@color/primary</color>
     <color name="dark_primary_dark">@color/primary_container</color>
     <color name="dark_background">@color/background</color>

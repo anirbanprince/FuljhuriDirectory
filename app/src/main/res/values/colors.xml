@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary colors -->
-    <color name="primary">#418ED5</color>
+    <!-- Legacy colors (keep for compatibility) -->
+    <color name="sangri">#2196F3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Primary colors - Elegant Blue -->
+    <color name="primary">@color/sangri</color>
     <color name="on_primary">#FFFFFF</color>
-    <color name="primary_container">#D4E3FF</color>
-    <color name="on_primary_container">#001C39</color>
+    <color name="primary_container">#E3F2FD</color>
+    <color name="on_primary_container">#004B91</color>
 
-    <!-- Secondary colors -->
-    <color name="secondary">#535F70</color>
+    <!-- Secondary colors - Warm Gray -->
+    <color name="secondary">#78909C</color>
     <color name="on_secondary">#FFFFFF</color>
-    <color name="secondary_container">#D7E3F8</color>
-    <color name="on_secondary_container">#101C2B</color>
+    <color name="secondary_container">#CFD8DC</color>
+    <color name="on_secondary_container">#37474F</color>
 
-    <!-- Tertiary colors -->
-    <color name="tertiary">#6B5778</color>
+    <!-- Tertiary colors - Soft Purple -->
+    <color name="tertiary">#9C27B0</color>
     <color name="on_tertiary">#FFFFFF</color>
-    <color name="tertiary_container">#F3DAFF</color>
-    <color name="on_tertiary_container">#251431</color>
+    <color name="tertiary_container">#F3E5F5</color>
+    <color name="on_tertiary_container">#4A148C</color>
 
-    <!-- Surface colors -->
-    <color name="surface">#FDFBFF</color>
-    <color name="on_surface">#1A1C1E</color>
-    <color name="surface_variant">#DFE2EB</color>
-    <color name="on_surface_variant">#43474E</color>
+    <!-- Surface colors - Clean White -->
+    <color name="surface">#FFFFFF</color>
+    <color name="on_surface">#202124</color>
+    <color name="surface_variant">#F5F5F5</color>
+    <color name="on_surface_variant">#5F6368</color>
 
     <!-- Background colors -->
-    <color name="background">#FDFBFF</color>
-    <color name="on_background">#1A1C1E</color>
+    <color name="background">#FAFAFA</color>
+    <color name="on_background">#202124</color>
 
-    <!-- Error colors -->
-    <color name="error">#BA1A1A</color>
+    <!-- Error colors - Material Red -->
+    <color name="error">#F44336</color>
     <color name="on_error">#FFFFFF</color>
-    <color name="error_container">#FFDAD6</color>
-    <color name="on_error_container">#410002</color>
+    <color name="error_container">#FFEBEE</color>
+    <color name="on_error_container">#D32F2F</color>
 
     <!-- Outline colors -->
-    <color name="outline">#73777F</color>
-    <color name="outline_variant">#C3C6CF</color>
-
-    <!-- Legacy colors (keep for backward compatibility) -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="sangri">@color/primary</color>
+    <color name="outline">#79747E</color>
+    <color name="outline_variant">#E0E0E0</color>
 </resources>

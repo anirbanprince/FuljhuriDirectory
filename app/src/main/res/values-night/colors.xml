@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary colors -->
+    <color name="primary">#A1C9FF</color>
+    <color name="on_primary">#00325B</color>
+    <color name="primary_container">#004881</color>
+    <color name="on_primary_container">#D4E3FF</color>
+
+    <!-- Secondary colors -->
+    <color name="secondary">#BBC7DB</color>
+    <color name="on_secondary">#253141</color>
+    <color name="secondary_container">#3B4858</color>
+    <color name="on_secondary_container">#D7E3F8</color>
+
+    <!-- Tertiary colors -->
+    <color name="tertiary">#D6BEE4</color>
+    <color name="on_tertiary">#3B2948</color>
+    <color name="tertiary_container">#523F5F</color>
+    <color name="on_tertiary_container">#F3DAFF</color>
+
+    <!-- Surface colors -->
+    <color name="surface">#1A1C1E</color>
+    <color name="on_surface">#E3E2E6</color>
+    <color name="surface_variant">#43474E</color>
+    <color name="on_surface_variant">#C3C6CF</color>
+
+    <!-- Background colors -->
+    <color name="background">#1A1C1E</color>
+    <color name="on_background">#E3E2E6</color>
+
+    <!-- Error colors -->
+    <color name="error">#FFB4AB</color>
+    <color name="on_error">#690005</color>
+    <color name="error_container">#93000A</color>
+    <color name="on_error_container">#FFDAD6</color>
+
+    <!-- Outline colors -->
+    <color name="outline">#8D9199</color>
+    <color name="outline_variant">#43474E</color>
+
+    <!-- Legacy colors (keep for backward compatibility) -->
+    <color name="dark_primary">@color/primary</color>
+    <color name="dark_primary_dark">@color/primary_container</color>
+    <color name="dark_background">@color/background</color>
+    <color name="dark_text">@color/on_background</color>
+</resources> 
